@@ -33,10 +33,21 @@
         android:id="@+id/guitar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
+        android:layout_below="@+id/info"
         android:layout_toRightOf="@+id/info"
         android:background="@android:color/transparent"
         android:contentDescription="@string/guitar"
         android:src="@drawable/guitar" />
+
+    <ImageButton
+        android:id="@+id/piano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/play"
+        android:layout_alignLeft="@+id/guitar"
+        android:layout_marginBottom="22dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/piano"
+        android:src="@drawable/piano" />
     
 </RelativeLayout>
