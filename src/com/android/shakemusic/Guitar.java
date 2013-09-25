@@ -19,7 +19,12 @@ public class Guitar implements Instrument{
 		double T, An, dfn;
 		T = duration / bpm;
 		Nt = (int) (fs * T);
+<<<<<<< HEAD
 		byte sj[] = new byte[Nt];
+=======
+		double sj[] = new double[Nt];
+		byte generatedSnd[];
+>>>>>>> 3675992e49f6704be008c8519e10c338d4e71c49
 		// Make Note
 		int i, j;
 		for (i = 0; i < Nt; i++) {
@@ -30,10 +35,20 @@ public class Guitar implements Instrument{
 				An = 2	/ ((pisqr) * jhsqr * pluck_location * (1 - pluck_location))
 						* Math.sin(jh * pi * pluck_location);
 				dfn = Math.sqrt(1 + jhsqr * inharmonity * inharmonity);
+<<<<<<< HEAD
 				sj[i] = (byte) (An * Math.exp(-gam * jh * i / fs) * Math.sin(2
+=======
+				sj[i] = (An * Math.exp(-gam * jh * i / fs) * Math.sin(2
+>>>>>>> 3675992e49f6704be008c8519e10c338d4e71c49
 						* pi * i * freq * dfn * jh / fs));
 			}
 		}
-		return sj;
+		 int idx = 0;
+         for (double dVal : sj) {
+                 short val = (short) (dVal * 32767);
+                 generatedSnd[idx++] = (byte) (val & 0x00ff);
+                 generatedSnd[idx++] = (byte) ((val & 0xff00) >>> 8);
+         }
+		return generatedSnd;
 	}
 }
