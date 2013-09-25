@@ -20,7 +20,7 @@ public class Guitar implements Instrument{
 		T = duration / bpm;
 		Nt = (int) (fs * T);
 		double sj[] = new double[Nt];
-		byte generatedSnd[];
+		byte generatedSnd[] = new byte [(int) (fs*duration*2)];
 		// Make Note
 		int i, j;
 		for (i = 0; i < Nt; i++) {
