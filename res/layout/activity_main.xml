@@ -10,16 +10,6 @@
     tools:context=".MainActivity" >
 
     <ImageButton
-        android:id="@+id/info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/info"
-        android:src="@drawable/infotest" />
-
-    <ImageButton
         android:id="@+id/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,16 +18,6 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/play"
         android:src="@drawable/playtest" />
-
-    <ImageButton
-        android:id="@+id/guitar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/info"
-        android:layout_toRightOf="@+id/info"
-        android:background="@android:color/transparent"
-        android:contentDescription="@string/guitar"
-        android:src="@drawable/guitar" />
 
     <ImageButton
         android:id="@+id/piano"
@@ -49,5 +29,16 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/piano"
         android:src="@drawable/piano" />
+
+    <ImageButton
+        android:id="@+id/guitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/play"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/guitar"
+        android:src="@drawable/guitar" />
     
 </RelativeLayout>
