@@ -14,12 +14,12 @@ public class Guitar implements Instrument{
 		this.pluck_location = pluck_location;
 	}
 
-	public short[] Note(int freq) {
+	public byte[] Note(int freq) {
 		int Nt, jh, jhsqr;
 		double T, An, dfn;
 		T = duration / bpm;
 		Nt = (int) (fs * T);
-		short sj[] = new short[Nt];
+		byte sj[] = new byte[Nt];
 		// Make Note
 		int i, j;
 		for (i = 0; i < Nt; i++) {
@@ -30,7 +30,7 @@ public class Guitar implements Instrument{
 				An = 2	/ ((pisqr) * jhsqr * pluck_location * (1 - pluck_location))
 						* Math.sin(jh * pi * pluck_location);
 				dfn = Math.sqrt(1 + jhsqr * inharmonity * inharmonity);
-				sj[i] = (short) (An * Math.exp(-gam * jh * i / fs) * Math.sin(2
+				sj[i] = (byte) (An * Math.exp(-gam * jh * i / fs) * Math.sin(2
 						* pi * i * freq * dfn * jh / fs));
 			}
 		}
