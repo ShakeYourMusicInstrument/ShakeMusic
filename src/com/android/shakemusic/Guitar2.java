@@ -1,13 +1,13 @@
 package com.android.shakemusic;
 
-public class Guitar implements Instrument{
+public class Guitar2 implements Instrument{
 
 	private int nHarm;
 	private int bpm;
 	private double duration;
 	private double pluck_location;
 	
-	Guitar(int nHarm, int bpm, double duration, double pluck_location) {
+	Guitar2(int nHarm, int bpm, double duration, double pluck_location) {
 		this.nHarm = nHarm;
 		this.bpm = bpm;
 		this.duration = duration;

@@ -5,6 +5,9 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.media.AudioFormat;
+import android.media.AudioManager;
+import android.media.AudioTrack;
 import android.os.Bundle;
 
 public class GuitarActivity extends Activity implements SensorEventListener{
@@ -14,10 +17,25 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guitarlayout);
 		
+		onResume();
+		
 		SensorManager mSensor;
 		mSensor = (SensorManager) getSystemService(SENSOR_SERVICE);
 	    mSensor.registerListener(this, mSensor.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 	                SensorManager.SENSOR_DELAY_UI);
+	    
+	}
+	
+	protected void onResume(){
+		super.onResume();
+		int length = 10;
+		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length, 0.26);
+		final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, 
+				Instrument.fs, AudioFormat.CHANNEL_IN_STEREO,
+				AudioFormat.ENCODING_PCM_16BIT, Instrument.fs*length/2,
+				AudioTrack.MODE_STATIC);
+		audioTrack.write(guitar.Note(440), 0, Instrument.fs*length/2);
+		audioTrack.play();
 	}
 
 	@Override
