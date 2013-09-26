@@ -11,6 +11,6 @@ public interface Instrument {
 	final int HIGH_BPM = 120;
 	final int LOW_BPM = 60;
 	
-	public short[] Note(int freq);
+	public byte[] Note(int freq);
 	
 }
