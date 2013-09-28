@@ -28,14 +28,23 @@ public class Guitar implements Instrument{
 			for (j = 0; j < nHarm; j++) {
 				jh = j + 1;
 				jhsqr = jh * jh;
-				An = 2
-						/ ((pisqr) * jhsqr * pluck_location * (1 - pluck_location))
-						* Math.sin(jh * pi * pluck_location);
+				An = 2 / ((pisqr) * jhsqr * pluck_location * (1 - pluck_location))* Math.sin(jh * pi * pluck_location);
 				dfn = Math.sqrt(1 + jhsqr * inharmonity * inharmonity);
-				sj[i] = (short) (An * Math.exp(-gam * jh * i / fs) * Math.sin(2
-						* pi * i * freq * dfn * jh / fs));
+				sj[i] += (An * Math.exp(-gam * jh * i / fs) * Math.sin(2 * pi * i * freq * dfn * jh / fs));
+				System.out.println("***************************************************************************************+");
+				System.out.println(An);
+				System.out.println(dfn);
+				System.out.println(sj[i]);
+
 			}
 		}
+		
+		
+//		for (i = 0; i < Nt; ++i) {
+//			sj[i] = Math.sin(2 * Math.PI * i / (8000 / freq));
+//		}
+		
+		
 		int idx = 0;
         for (final double dVal : sj) {
             // scale to maximum amplitude

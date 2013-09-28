@@ -17,7 +17,14 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.guitarlayout);
 		
-		onResume();
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				System.out.println("11111111111111111111111111111111111111111111111111111111111111111111111111111111");
+				onResume();
+				System.out.println("222222222222222222222222222222222222222222222222222222222222222222222222222222222");
+			}
+		}).start();
 		
 		SensorManager mSensor;
 		mSensor = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -28,13 +35,13 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 	
 	protected void onResume(){
 		super.onResume();
-		int length = 10;
+		int length = 100;
 		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length, 0.26);
 		final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, 
 				Instrument.fs, AudioFormat.CHANNEL_IN_STEREO,
 				AudioFormat.ENCODING_PCM_16BIT, Instrument.fs*length/2,
 				AudioTrack.MODE_STATIC);
-		audioTrack.write(guitar.Note(440), 0, Instrument.fs*length/2);
+		audioTrack.write(guitar.Note(100), 0, (Instrument.fs)*length/2);
 		audioTrack.play();
 	}
 
@@ -58,19 +65,18 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 		int y = 0;
 		int z = 0;
 		
-		for(int i = 0; i < 10; i++){
 		
-			if(x != (int)values[0]){
-				x = (int)values[0];
-				System.out.println("x: " + x);
-			}else if(y != (int)values[1]){
-				y = (int)values[1];
-				System.out.println("y: " +y);
-			}else if(z != (int)values[2]){
-				z = (int)values[2];
-				//System.out.println("z: " + z);	
-			}
+		if(x != (int)values[0]){
+			x = (int)values[0];
+			//System.out.println("x: " + x);
+		}else if(y != (int)values[1]){
+			y = (int)values[1];
+			//System.out.println("y: " +y);
+		}else if(z != (int)values[2]){
+			z = (int)values[2];
+			//System.out.println("z: " + z);	
 		}
+		//onResume(Math.abs(x*y));
 	}
 	
 
