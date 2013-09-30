@@ -17,6 +17,7 @@
         android:layout_alignParentLeft="true"
         android:background="@android:color/transparent"
         android:contentDescription="@string/play"
+        android:onClick="onClickPlay"
         android:src="@drawable/playtest" />
 
     <ImageButton
@@ -27,6 +28,7 @@
         android:layout_alignLeft="@+id/guitar"
         android:layout_marginBottom="22dp"
         android:background="@android:color/transparent"
+        android:onClick="onClickPiano"
         android:contentDescription="@string/piano"
         android:src="@drawable/piano" />
 
@@ -39,6 +41,8 @@
         android:layout_toRightOf="@+id/play"
         android:background="@android:color/transparent"
         android:contentDescription="@string/guitar"
+        android:onClick="onClickGuitar"
         android:src="@drawable/guitar" />
+    
     
 </RelativeLayout>
