@@ -13,6 +13,8 @@
     <string name="guitarActivity">Guitar Activity</string>
     <string name="pianoActivity">Piano Activity</string>
     <string name="playActivity">Play Activity</string>
+    <string name="recButtonStart">Record</string>
+    <string name="recButtonStop">stop recording</string>
     
 
 </resources>
