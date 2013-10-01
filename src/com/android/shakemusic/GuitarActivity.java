@@ -48,6 +48,11 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 	
 	protected void onResume(){
 		super.onResume();
+		sound();
+		
+	}
+	
+	public void sound(){
 		int length = 100;
 		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length, 0.26);
 		final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, 
@@ -100,17 +105,21 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 //               System.out.println(current_time);
 //               System.out.println(last_update);
            
-           int time_difference = ((int) ((event.timestamp) - last_update))/1000000;
-           System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-           System.out.println("Diferencia de tiempo: " + time_difference);
+           int time_difference = Math.abs(((int) ((event.timestamp) - last_update))/10);
+//           System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+//           System.out.println("Diferencia de tiempo: " + time_difference);
            if (time_difference > 0) {
                float movement = Math.abs((curX + curY + curZ) - (prevX - prevY - prevZ)) / time_difference;
-               int limit = 1500;
-               float min_movement = (float) 1E-3;
+               //float movementX = Math.abs((curX - prevX)/time_difference);
+               
+               float min_movement = (float) 1E-8;
+               
                if (movement > min_movement) {
+            	   System.out.println("******************************************************************************************");
+                   System.out.println("Movement: " + movement);
                    //if (current_time - last_movement >= limit) {                    	
                       // Toast.makeText(getApplicationContext(), "Hay movimiento de " + movement, Toast.LENGTH_SHORT).show();
-                       onResume();
+                       sound();
                    //}
                    last_movement = current_time;
                }
@@ -125,12 +134,6 @@ public class GuitarActivity extends Activity implements SensorEventListener{
        }
 		
 	}
-	
-	public int change(){
-		int change = 0;
-		
-		
-		return change;
-	}
+
 
 }
