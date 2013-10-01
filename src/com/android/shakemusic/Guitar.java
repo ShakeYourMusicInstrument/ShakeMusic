@@ -2,25 +2,25 @@ package com.android.shakemusic;
 
 public class Guitar implements Instrument{
 
-	private int nHarm;
+	//private int nHarm;
 	private int bpm;
-	private double duration;
-	private double pluck_location;
+	private int duration;
+	//private double pluck_location;
+	private byte generatedSnd[];
 
-	Guitar(int nHarm, int bpm, double duration, double pluck_location) {
-		this.nHarm = nHarm;
+	Guitar(int nHarm, int bpm, int duration, double pluck_location) {
+		//this.nHarm = nHarm;
 		this.bpm = bpm;
 		this.duration = duration;
-		this.pluck_location = pluck_location;
+		//this.pluck_location = pluck_location;
 	}
 
 	public byte[] Note(int freq) {
 		int Nt, jh, jhsqr;
-		double T, An, dfn;
-		T = duration / bpm;
-		Nt = (int) (fs * T);
+		//double  An, dfn;
+		Nt = (int) (fs * duration / bpm);
 		double sj[] = new double[Nt];
-		byte generatedSnd[] = new byte[(int) (fs*duration*2)];
+		generatedSnd= new byte[(int) (fs*duration*2)];
 		// Make Note
 		int i, j;
 //		for (i = 0; i < Nt; i++) {
@@ -54,6 +54,15 @@ public class Guitar implements Instrument{
             generatedSnd[idx++] = (byte) ((val & 0xff00) >>> 8);
 
         }
+        if(GuitarActivity.recording){
+			new Thread(new Runnable(){
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					GuitarActivity.record.write(generatedSnd, duration);
+				}
+			});
+		}
 		return generatedSnd;
 	}
 

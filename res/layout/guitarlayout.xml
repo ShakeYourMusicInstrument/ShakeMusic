@@ -8,8 +8,20 @@
     <Button
         android:id="@+id/recButton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/recButtonStart" 
-        android:onClick="onRecordClick"/>
+        android:layout_height="wrap_content"
+        android:onClick="onRecordClick"
+        android:text="@string/recButtonStart" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/introduceData" />
+
+    <EditText
+        android:id="@+id/wavName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
 
 </LinearLayout>

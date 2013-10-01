@@ -14,22 +14,20 @@ import android.widget.Button;
 
 public class GuitarActivity extends Activity implements SensorEventListener {
 
-	float gravity[] = new float[3];
-	int linear_acceleration[] = new int[3];
+	float gravity[] = new float[2];
+	int linear_acceleration[] = new int[2];
 	private final float alpha = 0.8f;
 
 	private long last_update = 0;
 
 	private int prevX = 0;
-	private int prevY = 0;
 	private int prevZ = 0;
 
 	private int curX = 0;
-	private int curY = 0;
 	private int curZ = 0;
 
-	private boolean recording;
-	private IO record;
+	static boolean recording;
+	static IO record;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +39,17 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 		mSensor.registerListener(this,
 				mSensor.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_UI);
+		
 		recording = false;
 	}
 
 	protected void onResume() {
 		super.onResume();
-		sound(100);
+		sound(100, 0);
 
 	}
 
-	public void sound(int freq) {
-		int length = 100;
+	public void sound(int freq, int length) {
 		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length, 0.26);
 		final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
 				Instrument.fs, AudioFormat.CHANNEL_IN_STEREO,
@@ -88,62 +86,54 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 		// with t, the low-pass filter's time-constant
 		// and dT, the event delivery rate
 		synchronized (this) {
-			if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-				gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
-				gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[1];
-				gravity[2] = alpha * gravity[2] + (1 - alpha) * event.values[2];
+			gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
+			gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[2];
 
-				linear_acceleration[0] = (int) (event.values[0] - gravity[0]);
-				linear_acceleration[1] = (int) (event.values[1] - gravity[1]);
-				linear_acceleration[2] = (int) (event.values[2] - gravity[2]);
+			linear_acceleration[0] = (int) (event.values[0] - gravity[0]);
+			linear_acceleration[1] = (int) (event.values[2] - gravity[1]);
 
-				long current_time = event.timestamp;
+			long current_time = event.timestamp;
 
-				curX = linear_acceleration[0];
-				curY = linear_acceleration[1];
-				curZ = linear_acceleration[2];
+			curX = linear_acceleration[0];
+			curZ = linear_acceleration[1];
 
-				if (prevX == 0 && prevY == 0 && prevZ == 0) {
-					last_update = current_time;
-					prevX = curX;
-					prevY = curY;
-					prevZ = curZ;
-				}
+			if (prevX == 0 && prevZ == 0) {
+				last_update = current_time;
+				prevX = curX;
+				prevZ = curZ;
+			}
 
-				// System.out.println("******************************************************************************************");
-				// System.out.println(current_time);
-				// System.out.println(last_update);
+			// System.out.println("******************************************************************************************");
+			// System.out.println(current_time);
+			// System.out.println(last_update);
 
-				int time_difference = Math
-						.abs(((int) ((event.timestamp) - last_update)) / 100000);
-				// System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-				// System.out.println("Diferencia de tiempo: " +
-				// time_difference);
-				if (time_difference > 0) {
-					float movement = Math.abs((curX + curZ)
-							- (prevX - prevZ))
-							/ time_difference;
-					// float movementX = Math.abs((curX -
-					// prevX)/time_difference);
+			int time_difference = Math
+					.abs(((int) ((event.timestamp) - last_update)) / 100000);
+			// System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			// System.out.println("Diferencia de tiempo: " +
+			// time_difference);
+			if (time_difference > 0) {
+				float movement = Math.abs((curX + curZ) - (prevX - prevZ))
+						/ time_difference;
+				// float movementX = Math.abs((curX -
+				// prevX)/time_difference);
 
-					float min_movement = (float) 1E-16;
+				float min_movement = (float) 1E-16;
 
-					if (movement > min_movement) {
-						if((curX > curZ) && (curX > 1)){
-							sound(261);
-						}else if((curZ > curX) && curZ > 1){
-							sound(1660);
-						}else if((curX > curZ) && (curX < 1)){
-							sound(50);
-						}else if((curZ > curX) && curZ < 1){
-							sound(700);
-						}
-						
+				if (movement > min_movement) {
+					if ((curX > curZ) && (curX > 1)) {
+						sound(261, time_difference);
+					} else if ((curZ > curX) && curZ > 1) {
+						sound(1660, time_difference);
+					} else if ((curX > curZ) && (curX < 1)) {
+						sound(50, time_difference);
+					} else if ((curZ > curX) && curZ < 1) {
+						sound(700, time_difference);
 					}
-					prevX = curX;
-					prevY = curY;
-					prevZ = curZ;
+
 				}
+				prevX = curX;
+				prevZ = curZ;
 			}
 
 		}
