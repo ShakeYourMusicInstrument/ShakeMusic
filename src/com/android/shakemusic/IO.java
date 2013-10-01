@@ -47,12 +47,17 @@ public class IO {
 			outStream.close();
 			outStream = new FileOutputStream(sndFile);
 	    	outStream.write(riff);
-	    	outStream.write(dataLength)
+	    	byte[] bytes = new byte[4];
+	    	for (int i = 0; i < 4; i++) {
+	    	    bytes[i] = (byte)(dataLength >>> (i * 8));
+	    	}
+	    	outStream.write(bytes);
+	    	outStream.write(header, 8, 32);
+	    	outStream.write(bytes);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}		
 		sndFile.renameTo(new File(path.getAbsolutePath(), name+".wav"));
 		return false;		
 	}
