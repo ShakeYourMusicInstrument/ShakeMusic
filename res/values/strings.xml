@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Shake music</string>
-    <string name="Info">Info</string>
     <string name="hello_world">Hello world!</string>
 
     <string name="play">Play</string>

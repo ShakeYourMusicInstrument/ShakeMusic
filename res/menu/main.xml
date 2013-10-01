@@ -2,7 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/Info"
-        android:title="@string/Info"/>
+        android:id="@+id/language"
+        android:showAsAction="never"
+        android:title="Language"/>
+    
+    <item
+        android:id="@+id/instructions"
+        android:showAsAction="never"
+        android:title="Instructions"/>
+    
+    <item
+        android:id="@+id/exit"
+        android:showAsAction="never"
+        android:title="Exit"/>
+    
 
 </menu>
