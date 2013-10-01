@@ -2,7 +2,6 @@
 <resources>
 
     <string name="app_name">Shake music</string>
-    <string name="Info">Info</string>
     <string name="hello_world">Hello world!</string>
 
     <string name="play">Play</string>
@@ -13,6 +12,8 @@
     <string name="guitarActivity">Guitar Activity</string>
     <string name="pianoActivity">Piano Activity</string>
     <string name="playActivity">Play Activity</string>
+    <string name="recButtonStart">Record</string>
+    <string name="recButtonStop">stop recording</string>
     
 
 </resources>

@@ -15,6 +15,7 @@ public class IO {
 	private int dataLength;
 	
 	private final byte[] header = {'R','I','F','F',0,0,0,0,'W','A','V','E','f','m','t',' ',16,0,0,0,1,0,2,0,40,0x1f,0,0,80,0x3e,0,0,4,0,/*35*/16,0,'d','a','t','a'};
+	private final byte[] riff = {'R','I','F','F'};
 	
 	public IO(){
 		path = Environment.getExternalStoragePublicDirectory(
@@ -44,10 +45,14 @@ public class IO {
 	public boolean save(String name){
 		try {
 			outStream.close();
+			outStream = new FileOutputStream(sndFile);
+	    	outStream.write(riff);
+	    	outStream.write(dataLength)
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		sndFile.renameTo(new File(path.getAbsolutePath(), name+".wav"));
 		return false;		
 	}
