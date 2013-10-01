@@ -46,18 +46,18 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 
 	protected void onResume() {
 		super.onResume();
-		sound();
+		sound(100);
 
 	}
 
-	public void sound() {
+	public void sound(int freq) {
 		int length = 100;
 		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length, 0.26);
 		final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
 				Instrument.fs, AudioFormat.CHANNEL_IN_STEREO,
 				AudioFormat.ENCODING_PCM_16BIT, Instrument.fs * length / 2,
 				AudioTrack.MODE_STATIC);
-		audioTrack.write(guitar.Note(100), 0, (Instrument.fs) * length / 2);
+		audioTrack.write(guitar.Note(freq), 0, (Instrument.fs) * length / 2);
 		audioTrack.play();
 	}
 
@@ -115,21 +115,30 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 				// System.out.println(last_update);
 
 				int time_difference = Math
-						.abs(((int) ((event.timestamp) - last_update)) / 10);
+						.abs(((int) ((event.timestamp) - last_update)) / 100000);
 				// System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 				// System.out.println("Diferencia de tiempo: " +
 				// time_difference);
 				if (time_difference > 0) {
-					float movement = Math.abs((curX + curY + curZ)
-							- (prevX - prevY - prevZ))
+					float movement = Math.abs((curX + curZ)
+							- (prevX - prevZ))
 							/ time_difference;
 					// float movementX = Math.abs((curX -
 					// prevX)/time_difference);
 
-					float min_movement = (float) 1E-8;
+					float min_movement = (float) 1E-16;
 
 					if (movement > min_movement) {
-						sound();
+						if((curX > curZ) && (curX > 1)){
+							sound(261);
+						}else if((curZ > curX) && curZ > 1){
+							sound(1660);
+						}else if((curX > curZ) && (curX < 1)){
+							sound(50);
+						}else if((curZ > curX) && curZ < 1){
+							sound(700);
+						}
+						
 					}
 					prevX = curX;
 					prevY = curY;
