@@ -67,7 +67,7 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 			recording = true;
 			record = new IO();
 			Button recButton = (Button) findViewById(R.id.recButton);
-			recButton.setText("@string/recButtonStop");
+			recButton.setText(R.string.recButtonStop);
 			recButton.setBackgroundColor(0xffff0000);
 		}else{
 			
@@ -85,9 +85,7 @@ public class GuitarActivity extends Activity implements SensorEventListener{
 	int i = 0;
 
 	@Override
-	public void onSensorChanged(final SensorEvent event) {
-<<<<<<< HEAD
-		
+	public void onSensorChanged(final SensorEvent event) {		
 		// alpha is calculated as t / (t + dT)
         // with t, the low-pass filter's time-constant
         // and dT, the event delivery rate
@@ -108,7 +106,6 @@ public class GuitarActivity extends Activity implements SensorEventListener{
    	        curZ = linear_acceleration[2];
            
            if (prevX == 0 && prevY == 0 && prevZ == 0) {
-               last_update = current_time;
                last_movement = current_time;
                prevX = curX;
                prevY = curY;
@@ -142,12 +139,7 @@ public class GuitarActivity extends Activity implements SensorEventListener{
                prevX = curX;
                prevY = curY;
                prevZ = curZ;
-               last_update = current_time;
            }
-=======
->>>>>>> 771c690e07e4a238f5ecfe6d219aac9e09285805
-
-		
 		synchronized (this) {
 			// alpha is calculated as t / (t + dT)
 			// with t, the low-pass filter's time-constant
