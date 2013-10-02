@@ -62,9 +62,42 @@ public class MainActivity extends Activity {
 			Intent i = new Intent("com.android.shakemusic.INSTRUCTION");
 			startActivity(i);
 			break;
+			
+		case R.id.exit:
+		break;
 		}
 		
 		return false;
 	}
 	
+<<<<<<< HEAD
+=======
+		/*
+		 * onClick Guitar
+		 */
+
+	public void onClickGuitar(View v) {
+	  			Intent guitar = new Intent(MainActivity.this, GuitarActivity.class);
+	  			startActivity(guitar);
+	  	}
+	  	
+	  	/*
+		 * onClick Play
+		 */
+		
+	  	public void onClickPlay(View v) {
+	  			Intent play = new Intent(MainActivity.this, PlayActivity.class);
+	  			startActivity(play);
+	  	}
+	  	
+	  	/*
+		 * onClick Piano
+		 */
+		
+	  	public void onClickPiano(View v) {
+	  			Intent piano = new Intent(MainActivity.this, PianoActivity.class);
+	  			startActivity(piano);
+	  	}  	
+
+>>>>>>> 44a3ddcf18d4fcaea97e6c7ee3ff9b80235e13d8
 }

@@ -2,12 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal" >
+    android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/instr"
         android:layout_width="match_parent"
         android:layout_height="109dp"
         android:text="This is a test for putting a transparent theme." />
+
+    <Button
+        android:id="@+id/bVoice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="Listen"
+        android:text="Listen to Intructions" />
 
 </LinearLayout>

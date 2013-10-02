@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Shake music</string>
+    <string name="app_name">Shake Music</string>
     <string name="hello_world">Hello world!</string>
 
-    <string name="play">Play</string>
-    <string name="info">Info</string>
-    <string name="guitar">Guitar</string>
-    <string name="piano">Piano</string>
     
+<<<<<<< HEAD
     <string name="guitarActivity">Guitar Activity</string>
     <string name="pianoActivity">Piano Activity</string>
     <string name="playActivity">Play Activity</string>
@@ -16,6 +13,14 @@
     <string name="recButtonStop">stop recording</string>
     <string name="introduceData">Introduce the name of the wave file</string>
     <string name="save">save recording</string>
+=======
+    <string name="GuitarActivity">Guitar</string>
+    <string name="PianoActivity">Piano</string>
+    <string name="PlayActivity">Play Music</string>
+    <string name="Instruction">Instructions</string>
+    <string name="Voice">Listen to Instructions</string>
+    
+>>>>>>> 44a3ddcf18d4fcaea97e6c7ee3ff9b80235e13d8
     
 
 </resources>
