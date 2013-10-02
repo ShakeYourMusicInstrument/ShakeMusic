@@ -37,6 +37,9 @@ public class MainActivity extends Activity {
 			Intent i = new Intent("com.android.shakemusic.INSTRUCTION");
 			startActivity(i);
 			break;
+			
+		case R.id.exit:
+		break;
 		}
 		
 		return false;
@@ -67,7 +70,6 @@ public class MainActivity extends Activity {
 	  	public void onClickPiano(View v) {
 	  			Intent piano = new Intent(MainActivity.this, PianoActivity.class);
 	  			startActivity(piano);
-	  	}
-	  	
+	  	}  	
 
 }

@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Shake music</string>
+    <string name="app_name">Shake Music</string>
     <string name="hello_world">Hello world!</string>
 
-    <string name="play">Play</string>
-    <string name="info">Info</string>
-    <string name="guitar">Guitar</string>
-    <string name="piano">Piano</string>
     
-    <string name="guitarActivity">Guitar Activity</string>
-    <string name="pianoActivity">Piano Activity</string>
-    <string name="playActivity">Play Activity</string>
+    <string name="GuitarActivity">Guitar</string>
+    <string name="PianoActivity">Piano</string>
+    <string name="PlayActivity">Play Music</string>
+    <string name="Instruction">Instructions</string>
+    <string name="Voice">Listen to Instructions</string>
+    
     
 
 </resources>

@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/play"
+        android:contentDescription="@string/PlayActivity"
         android:onClick="onClickPlay"
         android:src="@drawable/playtest" />
 
@@ -29,7 +29,7 @@
         android:layout_marginBottom="22dp"
         android:background="@android:color/transparent"
         android:onClick="onClickPiano"
-        android:contentDescription="@string/piano"
+        android:contentDescription="@string/PianoActivity"
         android:src="@drawable/piano" />
 
     <ImageButton
@@ -40,7 +40,7 @@
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/play"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/guitar"
+        android:contentDescription="@string/GuitarActivity"
         android:onClick="onClickGuitar"
         android:src="@drawable/guitar" />
     
