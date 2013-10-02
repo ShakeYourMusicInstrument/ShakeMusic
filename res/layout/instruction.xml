@@ -8,13 +8,13 @@
         android:id="@+id/instr"
         android:layout_width="match_parent"
         android:layout_height="109dp"
-        android:text="This is a test for putting a transparent theme." />
+        android:text="@string/Instr" />
 
     <Button
         android:id="@+id/bVoice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="Listen"
-        android:text="Listen to Intructions" />
+        android:text="@string/bTextListen" />
 
 </LinearLayout>

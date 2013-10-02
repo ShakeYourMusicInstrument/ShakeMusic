@@ -9,8 +9,12 @@
     <string name="Instruction">Instructions</string>
     <string name="Voice">Listen to Instructions</string>
     <string name="recButtonStart">Record</string>
-    <string name="recButtonStop">stop recording</string>
+    <string name="recButtonStop">Stop recording</string>
     <string name="introduceData">Introduce the name of the wave file</string>
-    <string name="save">save recording</string>
+    <string name="save">Save recording</string>
+    <string name="InstructionListen">Shake your phone to produce music</string>
+    <string name="bTextListen">Listen to Instructions</string>
+    <string name="Instr">This is a test for putting a transparent theme. Here will be the instructions.</string>
+    
 
 </resources>
