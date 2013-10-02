@@ -14,7 +14,8 @@ public class IO {
 	
 	private File path;
 	private File sndFile;
-    private OutputStream outStream;
+    
+	private OutputStream outStream;
 	private int dataLength;
 	
 	private final byte[] header = {'R','I','F','F',0,0,0,0,'W','A','V','E','f','m','t',' ',16,0,0,0,1,0,2,0,40,0x1f,0,0,80,0x3e,0,0,4,0,/*35*/16,0,'d','a','t','a'};
@@ -75,6 +76,10 @@ public class IO {
 		values.put(PATH, sndFile.getAbsolutePath());
 		db.insert(DBManager.TABLE_NAME, null, values);
 		return true;		
+	}
+	
+	public File getSndFile() {
+		return sndFile;
 	}
 	
 }
