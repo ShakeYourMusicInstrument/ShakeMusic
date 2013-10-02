@@ -13,7 +13,7 @@
         android:text="@string/recButtonStart" />
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/wavInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/introduceData" />
@@ -23,5 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSaveClick"
+        android:text="@string/save" />
 
 </LinearLayout>

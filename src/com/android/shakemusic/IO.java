@@ -5,6 +5,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Environment;
 
 public class IO {
@@ -16,6 +19,9 @@ public class IO {
 	
 	private final byte[] header = {'R','I','F','F',0,0,0,0,'W','A','V','E','f','m','t',' ',16,0,0,0,1,0,2,0,40,0x1f,0,0,80,0x3e,0,0,4,0,/*35*/16,0,'d','a','t','a'};
 	private final byte[] riff = {'R','I','F','F'};
+
+	public static final String NAME = "name";
+	public static final String PATH = "path";
 	
 	public IO(){
 		path = Environment.getExternalStoragePublicDirectory(
@@ -42,7 +48,7 @@ public class IO {
 		}		
 	}
 	
-	public boolean save(String name){
+	public boolean save(Context ctx, String name){
 		try {
 			outStream.close();
 			outStream = new FileOutputStream(sndFile);
@@ -57,9 +63,18 @@ public class IO {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
 		}		
-		sndFile.renameTo(new File(path.getAbsolutePath(), name+".wav"));
-		return false;		
+		name = name + ".wav";
+		sndFile.renameTo(new File(path.getAbsolutePath(), name));
+		DBManager dbManager = new DBManager(ctx);
+		final SQLiteDatabase db = dbManager.getWritableDatabase();
+		dbManager.onCreate(db);
+		ContentValues values = new ContentValues();
+		values.put(NAME, name);
+		values.put(PATH, sndFile.getAbsolutePath());
+		db.insert(DBManager.TABLE_NAME, null, values);
+		return true;		
 	}
 	
 }
