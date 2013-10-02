@@ -23,10 +23,31 @@
             </intent-filter>
         </activity>
         
+<<<<<<< HEAD
         <activity android:name="GuitarActivity"></activity>
         <activity android:name="PianoActivity"></activity> 
         <activity android:name="PlayActivity"></activity>
         <activity android:name="Voice"></activity> 
+=======
+        <activity 
+            android:name="com.android.shakemusic.GuitarActivity"
+            android:label="@string/guitarActivity" 
+            android:screenOrientation="portrait">
+            
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity 
+            android:name="com.android.shakemusic.PianoActivity"
+            android:label="@string/pianoActivity" >
+            
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+>>>>>>> 83a05fc4d91877d7ef7aaf79f90c3f0d2596e666
         
         
          <activity 
