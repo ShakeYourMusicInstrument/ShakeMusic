@@ -34,6 +34,9 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 
 	static boolean recording;
 	static IO record;
+	
+	private AudioTrack audioTrack;
+	private int countMovement = 0;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +52,28 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 				SensorManager.SENSOR_DELAY_UI);
 		
 		recording = false;
+		//onResume();
 	}
 
-	protected void onResume() {
-		super.onResume();
-		sound(100, 0);
-
-	}
+//	protected void onResume() {
+//		super.onResume();
+//		sound(100, 1);
+//
+//	}
 
 	public void sound(int freq, int length) {
-		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length, 0.26);
-		final AudioTrack audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
+		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length*10, 0.26);
+		audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
 				Instrument.fs, AudioFormat.CHANNEL_IN_STEREO,
-				AudioFormat.ENCODING_PCM_16BIT, Instrument.fs * length / 2,
+				AudioFormat.ENCODING_PCM_16BIT, Instrument.fs * length*10 / 2,
 				AudioTrack.MODE_STATIC);
-		audioTrack.write(guitar.Note(freq), 0, (Instrument.fs) * length / 2);
+		audioTrack.write(guitar.Note(freq), 0, (Instrument.fs) * length*10 / 2);
 		audioTrack.play();
+		
+	}
+	
+	public void stop(){
+		audioTrack.stop();
 	}
 
 	public void onRecordClick(View v) {
@@ -119,37 +128,42 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 				prevZ = curZ;
 			}
 
-			// System.out.println("******************************************************************************************");
-			// System.out.println(current_time);
-			// System.out.println(last_update);
-
 			int time_difference = Math
-					.abs(((int) ((event.timestamp) - last_update)) / 100000);
-			// System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-			// System.out.println("Diferencia de tiempo: " +
-			// time_difference);
+					.abs(((int) ((current_time) - last_update)) / 100000000);
+
 			if (time_difference > 0) {
-				float movement = Math.abs((curX + curZ) - (prevX - prevZ))
-						/ time_difference;
-				// float movementX = Math.abs((curX -
-				// prevX)/time_difference);
+				float movement = Math.abs((curX + curZ) - (prevX + prevZ));
+				
 
-				float min_movement = (float) 1E-16;
-
+				float min_movement = (float) 10;
+				
 				if (movement > min_movement) {
-					if ((curX > curZ) && (curX > 1)) {
-						sound(261, time_difference);
-					} else if ((curZ > curX) && curZ > 1) {
-						sound(1660, time_difference);
-					} else if ((curX > curZ) && (curX < 1)) {
-						sound(50, time_difference);
-					} else if ((curZ > curX) && curZ < 1) {
-						sound(700, time_difference);
+					countMovement ++;
+					prevX = curX;
+					prevZ = curZ;
+					last_update = current_time;
+					
+					if(countMovement % 2 == 1){
+						
+						if ((curX > curZ) && (curX > 1)) {
+							sound(261, time_difference);
+						} else if ((curZ > curX) && curZ > 1) {
+							sound(1660, time_difference);
+						} else if ((curX > curZ) && (curX < 1)) {
+							sound(50, time_difference);
+						} else if ((curZ > curX) && curZ < 1) {
+							sound(700, time_difference);
+						}else{
+							sound(700, time_difference);
+						}
+						
+					}else{
+						stop();
 					}
 
+					
 				}
-				prevX = curX;
-				prevZ = curZ;
+				
 			}
 
 		}

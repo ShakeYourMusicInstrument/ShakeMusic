@@ -25,7 +25,8 @@
         
         <activity 
             android:name="com.android.shakemusic.GuitarActivity"
-            android:label="@string/guitarActivity" >
+            android:label="@string/guitarActivity" 
+            android:screenOrientation="portrait">
             
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
