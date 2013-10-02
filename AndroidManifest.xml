@@ -22,46 +22,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-<<<<<<< HEAD
-        <activity android:name="GuitarActivity"></activity>
-        <activity android:name="PianoActivity"></activity> 
-        <activity android:name="PlayActivity"></activity>
-        <activity android:name="Voice"></activity> 
-=======
-        <activity 
-            android:name="com.android.shakemusic.GuitarActivity"
-            android:label="@string/guitarActivity" 
-            android:screenOrientation="portrait">
-            
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity
+            android:name="GuitarActivity"
+            android:screenOrientation="portrait" >
         </activity>
-        
-        <activity 
-            android:name="com.android.shakemusic.PianoActivity"
-            android:label="@string/pianoActivity" >
-            
-            <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <activity android:name="PianoActivity" >
         </activity>
->>>>>>> 83a05fc4d91877d7ef7aaf79f90c3f0d2596e666
-        
-        
-         <activity 
+        <activity android:name="PlayActivity" >
+        </activity>
+        <activity android:name="Voice" >
+        </activity>
+        <activity
             android:name="com.android.shakemusic.Instructions"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Dialog"
-             >
-            
+            android:theme="@android:style/Theme.Dialog" >
             <intent-filter>
-                <action android:name="com.android.shakemusic.INSTRUCTION"/>
+                <action android:name="com.android.shakemusic.INSTRUCTION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        
     </application>
 
 </manifest>
