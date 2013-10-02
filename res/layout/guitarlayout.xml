@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/background">
+
+    <Button
+        android:id="@+id/recButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onRecordClick"
+        android:text="@string/recButtonStart" />
+
+    <TextView
+        android:id="@+id/wavInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/introduceData" />
+
+    <EditText
+        android:id="@+id/wavName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onSaveClick"
+        android:text="@string/save" />
+
+</LinearLayout>

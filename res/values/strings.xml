@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Shake music</string>
+    <string name="hello_world">Hello world!</string>
+
+    <string name="play">Play</string>
+    <string name="info">Info</string>
+    <string name="guitar">Guitar</string>
+    <string name="piano">Piano</string>
+    
+    <string name="guitarActivity">Guitar Activity</string>
+    <string name="pianoActivity">Piano Activity</string>
+    <string name="playActivity">Play Activity</string>
+    <string name="recButtonStart">Record</string>
+    <string name="recButtonStop">stop recording</string>
+    <string name="introduceData">Introduce the name of the wave file</string>
+    <string name="save">save recording</string>
+    
+
+</resources>
