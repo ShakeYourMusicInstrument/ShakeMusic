@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background"
+    tools:context=".MainActivity" >
+
+    <ImageButton
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="14dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/PlayActivity"
+        android:onClick="onClickPlay"
+        android:src="@drawable/playtest" />
+
+    <ImageButton
+        android:id="@+id/guitar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/play"
+        android:layout_marginLeft="18dp"
+        android:layout_toRightOf="@+id/play"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/GuitarActivity"
+        android:onClick="onClickGuitar"
+        android:src="@drawable/guitar" />
+
+    <ImageButton
+        android:id="@+id/piano"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="36dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/PianoActivity"
+        android:onClick="onClickPiano"
+        android:src="@drawable/piano" />
+    
+</RelativeLayout>
