@@ -40,7 +40,7 @@
         android:id="@+id/bOk"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="Listen"
+        android:onClick="ExitInstruction"
         android:text="@string/OK" />
 
 </LinearLayout>

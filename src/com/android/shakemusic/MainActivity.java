@@ -1,9 +1,8 @@
 package com.android.shakemusic;
 
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,9 +20,9 @@ public class MainActivity extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		super.onCreateOptionsMenu(menu);
-		MenuInflater inflater=getMenuInflater();
-	    inflater.inflate(R.menu.main, menu);	
-	    return true;
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.main, menu);
+		return true;
 	}
 
 	/*
@@ -52,7 +51,7 @@ public class MainActivity extends Activity {
 		Intent piano = new Intent(MainActivity.this, PianoActivity.class);
 		startActivity(piano);
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
@@ -64,7 +63,12 @@ public class MainActivity extends Activity {
 			break;
 			
 		case R.id.exit:
-		break;
+			this.finish();
+			Intent intent = new Intent(Intent.ACTION_MAIN);
+			intent.addCategory(Intent.CATEGORY_HOME);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
+			break;
 		}
 		
 		return false;
