@@ -145,16 +145,26 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 					
 					if(countMovement % 2 == 1){
 						
-						if ((curX > curZ) && (curX > 1)) {
-							sound(261, time_difference);
-						} else if ((curZ > curX) && curZ > 1) {
-							sound(1660, time_difference);
-						} else if ((curX > curZ) && (curX < 1)) {
-							sound(50, time_difference);
-						} else if ((curZ > curX) && curZ < 1) {
-							sound(700, time_difference);
-						}else{
-							sound(700, time_difference);
+						System.out.println("Current X: " + curX);
+						System.out.println("Current Z: " + curZ);
+						
+						if (curX > curZ) {
+							if(curZ > 0){
+								System.out.println("DOOOOOOO");
+								sound(261, time_difference);
+							}else if((curZ < 0) || (curZ == 0)){
+								System.out.println("Reeeeeee");
+								sound(293, time_difference);
+							}
+							
+						}else if(curX < curZ){
+							if(curX > 0){
+								System.out.println("Soooooool");
+								sound(391, time_difference);
+							}else if((curX < 0) || (curX == 0)){
+								System.out.println("Laaaaaaaa");
+								sound(440, time_difference);					
+							}
 						}
 						
 					}else{
