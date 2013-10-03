@@ -62,7 +62,7 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 //	}
 
 	public void sound(int freq, int length) {
-		Guitar guitar = new Guitar(25, Instrument.NORM_BPM, length*10, 0.26);
+		Guitar guitar = new Guitar(Instrument.NORM_BPM, length*10, 0.26);
 		audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
 				Instrument.fs, AudioFormat.CHANNEL_IN_STEREO,
 				AudioFormat.ENCODING_PCM_16BIT, Instrument.fs * length*10 / 2,
