@@ -15,13 +15,9 @@ public class Guitar implements Instrument{
 	}
 
 	public byte[] Note(int freq) {
-<<<<<<< HEAD
-		nHarm = (int) Math.round(fs/(2.0*freq));
-		System.out.println("*************************************");
-		System.out.println(nHarm);
-=======
+
 		nHarm = (int) Math.round(fs/(4*freq));
->>>>>>> 8a658a30ea19a63a3ea3bef4d027dd9d338bddc3
+
 		int Nt, jh;
 		double An[] = new double [nHarm];
 		double dfn[] = new double[nHarm];

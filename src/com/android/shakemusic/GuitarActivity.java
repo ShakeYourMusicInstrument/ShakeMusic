@@ -137,19 +137,33 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 					last_update = current_time;
 
 					if (countMovement % 2 == 1) {
-						if (curX > curZ) {
-							if (curZ > 0) {
+						
+						if((curX <= 0) && (curZ > 0)){
+							if(-curX <= curZ){
 								sound(261, time_difference);
-							} else if ((curZ < 0) || (curZ == 0)) {
+							}else{
 								sound(293, time_difference);
 							}
-						} else if (curX < curZ) {
-							if (curX > 0) {
-								sound(391, time_difference);
-							} else if ((curX < 0) || (curX == 0)) {
+						}else if((curX > 0) && (curZ >= 0)){
+							if(curX <= curZ ){
+								sound(329, time_difference);
+							}else{
+								sound(349, time_difference);
+							}
+						}else if((curX < 0) && (curZ <= 0)){
+							if(-curX > -curZ ){
+								sound(392, time_difference);
+							}else{
 								sound(440, time_difference);
 							}
+						}else if((curX >= 0) && (curZ < 0)){
+							if(curX < -curZ ){
+								sound(494, time_difference);
+							}else{
+								sound(523, time_difference);
+							}
 						}
+						
 
 					} else {
 						stop();

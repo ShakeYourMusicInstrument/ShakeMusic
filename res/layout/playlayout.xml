@@ -6,7 +6,7 @@
     android:background="@drawable/background">
 
     <ListView
-        android:id="@+id/playList"
+        android:id="@+id/list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </ListView>
