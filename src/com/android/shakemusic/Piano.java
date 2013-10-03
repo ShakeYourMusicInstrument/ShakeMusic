@@ -1,22 +1,18 @@
 package com.android.shakemusic;
 
-public class Guitar implements Instrument{
-
-	private int nHarm;
+public class Piano implements Instrument {
+	
+	private int nHarm = 10;
 	private int bpm;
 	private int duration;
-	private double pluck_location;
 	private byte generatedSnd[];
 
-	Guitar(int bpm, int duration, double pluck_location) {
+	Piano(int bpm, int duration) {
 		this.bpm = bpm;
 		this.duration = duration;
-		this.pluck_location = pluck_location;
 	}
 
 	public byte[] Note(int freq) {
-
-		nHarm = (int) Math.round(fs/(4*freq));
 
 		int Nt, jh;
 		double An[] = new double [nHarm];
@@ -29,7 +25,7 @@ public class Guitar implements Instrument{
 		for (i = 0; i < nHarm; i++) {
 			j = i+1;
 			jsqr = j*j;
-			An[i] = 2 / ((pisqr) * jsqr * pluck_location * (1 - pluck_location))* Math.sin(j * pi * pluck_location);
+			An[i] = 2 / ((pisqr) * jsqr)* Math.exp(j * pi);
 			dfn[i] = Math.sqrt(1 + jsqr * inharmonity * inharmonity);
 		}
 		
@@ -62,5 +58,4 @@ public class Guitar implements Instrument{
 		}
 		return generatedSnd;
 	}
-
 }

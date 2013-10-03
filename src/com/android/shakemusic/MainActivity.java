@@ -30,7 +30,8 @@ public class MainActivity extends Activity {
 	 */
 
 	public void onClickGuitar(View v) {
-		Intent guitar = new Intent(MainActivity.this, GuitarActivity.class);
+		Intent guitar = new Intent(MainActivity.this, ComposeActivity.class);
+		guitar.putExtra(Instrument.INSTRUMENT, Instrument.GUITAR);
 		startActivity(guitar);
 	}
 
@@ -48,7 +49,8 @@ public class MainActivity extends Activity {
 	 */
 
 	public void onClickPiano(View v) {
-		Intent piano = new Intent(MainActivity.this, PianoActivity.class);
+		Intent piano = new Intent(MainActivity.this, ComposeActivity.class);
+		piano.putExtra(Instrument.INSTRUMENT, Instrument.PIANO);
 		startActivity(piano);
 	}
 
