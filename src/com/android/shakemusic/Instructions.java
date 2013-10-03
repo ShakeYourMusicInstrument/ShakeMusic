@@ -15,8 +15,7 @@ public class Instructions extends Activity {
 	}
 	
 	public void Listen(View v) {
-		Intent intent = new Intent(getApplicationContext(), Voice.class);
-    	startActivity(intent);
+		new Voice(this);
     }
 	
 	public void ExitInstruction(View v) {
