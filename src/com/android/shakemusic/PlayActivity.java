@@ -25,7 +25,7 @@ public class PlayActivity extends ListActivity{
 		SQLiteDatabase db = dbManager.getWritableDatabase();
 		cursor = db.rawQuery("SELECT * FROM " + DBManager.TABLE_NAME, null);
 		adapter = new SimpleCursorAdapter(this, R.layout.list, cursor,
-				new String[] { "File name" },
+				new String[] {IO.NAME},
 				new int[] { R.id.fileName }, 0);
 		setListAdapter(adapter);
 	}
