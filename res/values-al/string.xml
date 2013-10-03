@@ -8,7 +8,7 @@
     <string name="Voice">Dëgjoni Instruksionet</string>
     <string name="recButtonStart">Regjistro</string>
     <string name="recButtonStop">Stop regjistrimin</string>
-    <string name="introduceData">Jep emrin e file wave</string>
+    <string name="introduceData">Vendos emrin e kompozimit:</string>
     <string name="save">Ruaje Regjistrimin</string>
     <string name="InstructionListen">Aplikacioni Music Shake përdor akselerometrin për të krijuar muzikë. Ju mund ta tundni pajisjen ose telefonin tuaj celular dhe të krijoni muzikë. Mbajeni telefonin me dorë. Kujdes mos ju bie nga dora kur e tundni. Tundeni në drejtime të ndryshme siç tregohet në figurën më poshtë dhe shijoni tingullin e kitares.</string>
     <string name="bTextListen">Dëgjo instruksionet</string>
