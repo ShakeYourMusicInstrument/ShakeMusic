@@ -2,9 +2,7 @@
 <resources>
 
     <string name="app_name">Shake Music</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="GuitarActivity">Guitar</string>
-    <string name="PianoActivity">Piano</string>
+    <string name="ComposeActivity">Componer</string>
     <string name="PlayActivity">Play Music</string>
     <string name="Instruction">Instructions</string>
     <string name="Voice">Listen to Instructions</string>

@@ -29,7 +29,7 @@
         android:layout_marginBottom="22dp"
         android:background="@android:color/transparent"
         android:onClick="onClickPiano"
-        android:contentDescription="@string/PianoActivity"
+        android:contentDescription="@string/ComposeActivity"
         android:src="@drawable/piano" />
 
     <ImageButton
@@ -40,7 +40,7 @@
         android:layout_marginTop="25dp"
         android:layout_toRightOf="@+id/play"
         android:background="@android:color/transparent"
-        android:contentDescription="@string/GuitarActivity"
+        android:contentDescription="@string/ComposeActivity"
         android:onClick="onClickGuitar"
         android:src="@drawable/guitar" />
     

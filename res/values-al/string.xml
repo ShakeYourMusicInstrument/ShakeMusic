@@ -2,9 +2,7 @@
 <resources>
 
     <string name="app_name">Shake Music</string>
-    <string name="hello_world">Përshëndetje!</string>
-    <string name="GuitarActivity">Kitare</string>
-    <string name="PianoActivity">Piano</string>
+    <string name="ComposeActivity">Kompozo</string>
     <string name="PlayActivity">Luaj Muzikën</string>
     <string name="Instruction">Instruksione</string>
     <string name="Voice">Dëgjoni Instruksionet</string>

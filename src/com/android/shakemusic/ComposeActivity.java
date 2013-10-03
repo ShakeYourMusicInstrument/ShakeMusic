@@ -43,7 +43,7 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.guitarlayout);
+		setContentView(R.layout.composelayout);
 		findViewById(R.id.saveButton).setVisibility(View.GONE);
 		findViewById(R.id.wavInfo).setVisibility(View.GONE);
 		findViewById(R.id.wavName).setVisibility(View.GONE); 
