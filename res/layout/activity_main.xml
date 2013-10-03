@@ -18,7 +18,7 @@
         android:background="@android:color/transparent"
         android:contentDescription="@string/PlayActivity"
         android:onClick="onClickPlay"
-        android:src="@drawable/playtest" />
+        android:src="@drawable/play" />
 
     <ImageButton
         android:id="@+id/piano"

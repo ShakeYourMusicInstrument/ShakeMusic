@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Shake Music</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="GuitarActivity">Guitar</string>
+    <string name="PianoActivity">Piano</string>
+    <string name="PlayActivity">Play Music</string>
+    <string name="Instruction">Instructions</string>
+    <string name="Voice">Listen to Instructions</string>
+    <string name="recButtonStart">Record</string>
+    <string name="recButtonStop">Stop recording</string>
+    <string name="introduceData">Introduce the name of the wave file</string>
+    <string name="save">Save recording</string>
+    <string name="InstructionListen">Music Shake application uses the accelerometer to produce music. You can shake your android phone or device and compose music. Keep your phone with your hand. Be careful not to drop it when you shake it. Shake in different directions as shown in the figure below and enjoy the sound of the guitar.</string>
+    <string name="bTextListen">Listen to Instructions</string>
+    <string name="Instr">Music Shake application uses the accelerometer to produce music. You can shake your android phone or device and compose music. Keep your phone with your hand.</string>
+    <string name="Instr1">Be careful not to drop it when you shake it. Shake in different directions as shown in the figure below and enjoy the sound of the guitar.</string>
+    <string name="OK">OK</string>
+
+</resources>

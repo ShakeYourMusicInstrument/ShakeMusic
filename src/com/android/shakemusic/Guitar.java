@@ -15,9 +15,13 @@ public class Guitar implements Instrument{
 	}
 
 	public byte[] Note(int freq) {
+<<<<<<< HEAD
 		nHarm = (int) Math.round(fs/(2.0*freq));
 		System.out.println("*************************************");
 		System.out.println(nHarm);
+=======
+		nHarm = (int) Math.round(fs/(4*freq));
+>>>>>>> 8a658a30ea19a63a3ea3bef4d027dd9d338bddc3
 		int Nt, jh;
 		double An[] = new double [nHarm];
 		double dfn[] = new double[nHarm];
@@ -32,34 +36,25 @@ public class Guitar implements Instrument{
 			An[i] = 2 / ((pisqr) * jsqr * pluck_location * (1 - pluck_location))* Math.sin(j * pi * pluck_location);
 			dfn[i] = Math.sqrt(1 + jsqr * inharmonity * inharmonity);
 		}
+		
 		for (i = 0; i < Nt; i++) {
 			sj[i] = 0;
 			for (j = 0; j < nHarm; j++) {
 				jh = j + 1;
 				sj[i] += (An[j] * Math.exp(-gam * jh * i / fs) * Math.sin(2 * pi * i * freq * dfn[j] * jh / fs));
-//				System.out.println("***************************************************************************************+");
-//				System.out.println(An);
-//				System.out.println(dfn);
-//				System.out.println(sj[i]);
-
 			}
 		}
-//		
-//		
-//		for (i = 0; i < Nt; ++i) {
-//			sj[i] = Math.sin(2 * Math.PI * i / (8000 / freq));
-//		}
 		
-		
-		int idx = 0;
+		i = 0;
         for (final double dVal : sj) {
             // scale to maximum amplitude
             final short val = (short) ((dVal * 32767));
             // in 16 bit wav PCM, first byte is the low order byte
-            generatedSnd[idx++] = (byte) (val & 0x00ff);
-            generatedSnd[idx++] = (byte) ((val & 0xff00) >>> 8);
+            generatedSnd[i++] = (byte) (val & 0x00ff);
+            generatedSnd[i++] = (byte) ((val & 0xff00) >>> 8);
 
         }
+        
         if(GuitarActivity.recording){
 			new Thread(new Runnable(){
 				@Override

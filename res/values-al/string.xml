@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Shake Music</string>
+    <string name="hello_world">Përshëndetje!</string>
+    <string name="GuitarActivity">Kitare</string>
+    <string name="PianoActivity">Piano</string>
+    <string name="PlayActivity">Luaj Muzikën</string>
+    <string name="Instruction">Instruksione</string>
+    <string name="Voice">Dëgjoni Instruksionet</string>
+    <string name="recButtonStart">Regjistro</string>
+    <string name="recButtonStop">Stop regjistrimin</string>
+    <string name="introduceData">Jep emrin e file wave</string>
+    <string name="save">Ruaje Regjistrimin</string>
+    <string name="InstructionListen">Aplikacioni Music Shake përdor akselerometrin për të krijuar muzikë. Ju mund ta tundni pajisjen ose telefonin tuaj celular dhe të krijoni muzikë. Mbajeni telefonin me dorë. Kujdes mos ju bie nga dora kur e tundni. Tundeni në drejtime të ndryshme siç tregohet në figurën më poshtë dhe shijoni tingullin e kitares.</string>
+    <string name="bTextListen">Dëgjo instruksionet</string>
+    <string name="Instr">Aplikacioni Music Shake përdor akselerometrin për të krijuar muzikë. Ju mund ta tundni pajisjen ose telefonin tuaj celular dhe të krijoni muzikë. Mbajeni telefonin me dorë.</string>
+    <string name="Instr1">Kujdes mos ju bie nga dora kur e tundni. Tundeni në drejtime të ndryshme siç tregohet në figurën më poshtë dhe shijoni tingullin e kitares.</string>
+    <string name="OK">OK</string>
+
+</resources>
