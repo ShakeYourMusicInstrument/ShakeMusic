@@ -18,11 +18,10 @@ public class PlayActivity extends ListActivity{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.playlayout);
-		
 		DBManager dbManager = new DBManager(this);
 		SQLiteDatabase db = dbManager.getWritableDatabase();
 		cursor = db.rawQuery("SELECT * FROM " + DBManager.TABLE_NAME, null);
-		adapter = new SimpleCursorAdapter(this, R.layout.list_item, cursor,
+		adapter = new SimpleCursorAdapter(this, R.layout.list, cursor,
 				new String[] { "File name" },
 				new int[] { R.id.fileName }, 0);
 		setListAdapter(adapter);

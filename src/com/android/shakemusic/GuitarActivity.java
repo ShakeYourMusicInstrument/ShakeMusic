@@ -1,6 +1,7 @@
 package com.android.shakemusic;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.hardware.Sensor;
@@ -52,14 +53,7 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 				SensorManager.SENSOR_DELAY_UI);
 		
 		recording = false;
-		//onResume();
 	}
-
-//	protected void onResume() {
-//		super.onResume();
-//		sound(100, 1);
-//
-//	}
 
 	public void sound(int freq, int length) {
 		Guitar guitar = new Guitar(Instrument.NORM_BPM, length*10, 0.26);
@@ -133,49 +127,35 @@ public class GuitarActivity extends Activity implements SensorEventListener {
 
 			if (time_difference > 0) {
 				float movement = Math.abs((curX + curZ) - (prevX + prevZ));
-				
 
 				float min_movement = (float) 10;
-				
+
 				if (movement > min_movement) {
-					countMovement ++;
+					countMovement++;
 					prevX = curX;
 					prevZ = curZ;
 					last_update = current_time;
-					
-					if(countMovement % 2 == 1){
-						
-						System.out.println("Current X: " + curX);
-						System.out.println("Current Z: " + curZ);
-						
+
+					if (countMovement % 2 == 1) {
 						if (curX > curZ) {
-							if(curZ > 0){
-								System.out.println("DOOOOOOO");
+							if (curZ > 0) {
 								sound(261, time_difference);
-							}else if((curZ < 0) || (curZ == 0)){
-								System.out.println("Reeeeeee");
+							} else if ((curZ < 0) || (curZ == 0)) {
 								sound(293, time_difference);
 							}
-							
-						}else if(curX < curZ){
-							if(curX > 0){
-								System.out.println("Soooooool");
+						} else if (curX < curZ) {
+							if (curX > 0) {
 								sound(391, time_difference);
-							}else if((curX < 0) || (curX == 0)){
-								System.out.println("Laaaaaaaa");
-								sound(440, time_difference);					
+							} else if ((curX < 0) || (curX == 0)) {
+								sound(440, time_difference);
 							}
 						}
-						
-					}else{
+
+					} else {
 						stop();
 					}
-
-					
 				}
-				
 			}
-
 		}
 	}
 }
