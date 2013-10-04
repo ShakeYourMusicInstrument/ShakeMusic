@@ -16,13 +16,14 @@ public class PlayActivity extends ListActivity{
 	
 	private Cursor cursor;
 	private ListAdapter adapter;
+	SQLiteDatabase db;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.playlayout);
 		DBManager dbManager = new DBManager(this);
-		SQLiteDatabase db = dbManager.getWritableDatabase();
+		db = dbManager.getWritableDatabase();
 		cursor = db.rawQuery("SELECT * FROM " + DBManager.TABLE_NAME, null);
 		adapter = new SimpleCursorAdapter(this, R.layout.list, cursor,
 				new String[] {IO.NAME},
@@ -33,7 +34,8 @@ public class PlayActivity extends ListActivity{
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
-		MediaPlayer mPlayer = MediaPlayer.create(this, Uri.fromFile(ComposeActivity.record.getSndFile()));
+		cursor.moveToPosition(position);
+		MediaPlayer mPlayer = MediaPlayer.create(this, Uri.parse(cursor.getString(3)));
         mPlayer.setOnCompletionListener(new OnCompletionListener() {
 
            @Override
