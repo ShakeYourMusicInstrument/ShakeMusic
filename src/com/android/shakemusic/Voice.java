@@ -1,7 +1,5 @@
 package com.android.shakemusic;
 
-import java.util.Locale;
-
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 

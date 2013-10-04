@@ -4,7 +4,9 @@
     <string name="app_name">Menea el instrumento</string>
     <string name="ComposeActivity">Componer</string>
     <string name="PlayActivity">Reproducir</string>
-    <string name="Instruction">Instrucciones</string>
+    <string name="Instructions">Instrucciones</string>
+    <string name="Language">Lenguaje</string>
+    <string name="Exit">Salida</string>
     <string name="Voice">Pegar el oido a las instrucciones</string>
     <string name="recButtonStart">Grabar</string>
     <string name="recButtonStop">¡¡¡¡Para de grabar prehmo!!!!</string>

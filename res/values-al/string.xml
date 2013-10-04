@@ -4,7 +4,9 @@
     <string name="app_name">Shake Music</string>
     <string name="ComposeActivity">Kompozo</string>
     <string name="PlayActivity">Luaj Muzikën</string>
-    <string name="Instruction">Instruksione</string>
+    <string name="Instructions">Instruksione</string>
+    <string name="Language">Gjuhë</string>
+    <string name="Exit">Dil</string>
     <string name="Voice">Dëgjoni Instruksionet</string>
     <string name="recButtonStart">Regjistro</string>
     <string name="recButtonStop">Stop regjistrimin</string>

@@ -4,7 +4,9 @@
     <string name="app_name">Shake Music</string>
     <string name="ComposeActivity">Compose</string>
     <string name="PlayActivity">Play Music</string>
-    <string name="Instruction">Instructions</string>
+    <string name="Instructions">Instructions</string>
+    <string name="Language">Language</string>
+    <string name="Exit">Exit</string>
     <string name="Voice">Listen to Instructions</string>
     <string name="recButtonStart">Record</string>
     <string name="recButtonStop">Stop recording</string>
