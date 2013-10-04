@@ -1,6 +1,8 @@
 package com.android.shakemusic;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -56,18 +58,18 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch(item.getItemId()){
-		
+		switch (item.getItemId()) {
+
 		case R.id.language:
 			Intent lIntent = new Intent("com.android.shakemusic.LANG");
 			startActivity(lIntent);
 			break;
-			
+
 		case R.id.instructions:
 			Intent i = new Intent("com.android.shakemusic.INSTRUCTION");
 			startActivity(i);
 			break;
-			
+
 		case R.id.exit:
 			this.finish();
 			Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -76,7 +78,24 @@ public class MainActivity extends Activity {
 			startActivity(intent);
 			break;
 		}
-		
+
 		return false;
+	}
+
+	@Override
+	public void onBackPressed() {
+		new AlertDialog.Builder(this)
+				.setIcon(android.R.drawable.ic_dialog_alert)
+				.setTitle("Closing Application")
+				.setMessage("Are you sure you want to close this application?")
+				.setPositiveButton("Yes",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								finish();
+							}
+
+						}).setNegativeButton("No", null).show();
 	}
 }
