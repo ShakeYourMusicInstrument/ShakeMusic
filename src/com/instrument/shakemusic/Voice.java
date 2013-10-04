@@ -1,7 +1,5 @@
 package com.instrument.shakemusic;
 
-import com.android.shakemusic.R;
-
 import android.content.Context;
 import android.speech.tts.TextToSpeech;
 

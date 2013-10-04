@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.android.shakemusic.R;
-
 public class PlayActivity extends ListActivity{
 	
 	private Cursor cursor;

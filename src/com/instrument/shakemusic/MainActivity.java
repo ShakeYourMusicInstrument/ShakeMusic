@@ -1,7 +1,5 @@
 package com.instrument.shakemusic;
 
-import com.android.shakemusic.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.shakemusic"
+    package="com.instrument.shakemusic"
     android:versionCode="1"
     android:versionName="1.0" 
     android:configChanges="locale|orientation">
@@ -46,7 +46,7 @@
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Dialog" >
             <intent-filter>
-                <action android:name="com.android.shakemusic.INSTRUCTION" />
+                <action android:name="com.instrument.shakemusic.INSTRUCTION" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -57,7 +57,7 @@
             android:label="@string/app_name"
            >
             <intent-filter>
-                <action android:name="com.android.shakemusic.LANG" />
+                <action android:name="com.instrument.shakemusic.LANG" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
