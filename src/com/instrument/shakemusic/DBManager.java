@@ -1,4 +1,4 @@
-package com.android.shakemusic;
+package com.instrument.shakemusic;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

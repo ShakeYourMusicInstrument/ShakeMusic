@@ -1,4 +1,4 @@
-package com.android.shakemusic;
+package com.instrument.shakemusic;
 
 import java.io.File;
 import java.io.FileOutputStream;

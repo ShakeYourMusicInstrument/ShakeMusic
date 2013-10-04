@@ -1,4 +1,4 @@
-package com.android.shakemusic;
+package com.instrument.shakemusic;
 
 public interface Instrument {
 

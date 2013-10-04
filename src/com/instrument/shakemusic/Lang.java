@@ -1,4 +1,4 @@
-package com.android.shakemusic;
+package com.instrument.shakemusic;
 
 import java.util.Locale;
 
@@ -11,6 +11,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.android.shakemusic.R;
 
 public class Lang extends PreferenceActivity {
 

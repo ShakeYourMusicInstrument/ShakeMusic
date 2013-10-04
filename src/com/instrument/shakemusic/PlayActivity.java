@@ -1,18 +1,17 @@
-package com.android.shakemusic;
-
-import java.io.IOException;
+package com.instrument.shakemusic;
 
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.android.shakemusic.R;
 
 public class PlayActivity extends ListActivity{
 	

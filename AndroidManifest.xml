@@ -17,7 +17,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.android.shakemusic.MainActivity"
+            android:name="com.instrument.shakemusic.MainActivity"
             android:configChanges="locale"
             android:label="@string/app_name" >
             <intent-filter>
@@ -41,7 +41,7 @@
             android:configChanges="locale" >
         </activity>
         <activity
-            android:name="com.android.shakemusic.Instructions"
+            android:name="com.instrument.shakemusic.Instructions"
             android:configChanges="locale"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Dialog" >
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.android.shakemusic.Lang"
+            android:name="com.instrument.shakemusic.Lang"
             android:configChanges="locale"
             android:label="@string/app_name"
            >
