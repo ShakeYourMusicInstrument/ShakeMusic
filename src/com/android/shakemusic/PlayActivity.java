@@ -1,5 +1,7 @@
 package com.android.shakemusic;
 
+import java.io.IOException;
+
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,7 +38,14 @@ public class PlayActivity extends ListActivity{
 		// TODO Auto-generated method stub
 		cursor = db.rawQuery("SELECT * FROM " + DBManager.TABLE_NAME, null);
 		cursor.moveToPosition(position);
-		MediaPlayer mPlayer = MediaPlayer.create(this, Uri.parse(cursor.getString(2)));
+		MediaPlayer mPlayer = new MediaPlayer();
+		try {
+			mPlayer.setDataSource(cursor.getString(2));
+			mPlayer.prepare();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
         mPlayer.setOnCompletionListener(new OnCompletionListener() {
 
            @Override

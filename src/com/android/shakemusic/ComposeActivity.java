@@ -31,6 +31,23 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	private int prevX = 0;
 	private int prevZ = 0;
 
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mSensor.unregisterListener(this);
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		mSensor.registerListener(this,
+				mSensor.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
+				SensorManager.SENSOR_DELAY_UI);
+
+	}
+
 	private int curX = 0;
 	private int curZ = 0;
 
@@ -50,11 +67,8 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 		instrument = this.getIntent().getIntExtra("INSTRUMENT", -1);
 		
 		mSensor = (SensorManager) getSystemService(SENSOR_SERVICE);
-		mSensor.registerListener(this,
-				mSensor.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-				SensorManager.SENSOR_DELAY_UI);
-		
 		recording = false;
+		onResume();
 	}
 
 	public void sound(int freq, int length) {
