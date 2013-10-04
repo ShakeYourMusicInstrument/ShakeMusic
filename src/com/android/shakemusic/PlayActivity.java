@@ -34,8 +34,9 @@ public class PlayActivity extends ListActivity{
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
+		cursor = db.rawQuery("SELECT * FROM " + DBManager.TABLE_NAME, null);
 		cursor.moveToPosition(position);
-		MediaPlayer mPlayer = MediaPlayer.create(this, Uri.parse(cursor.getString(3)));
+		MediaPlayer mPlayer = MediaPlayer.create(this, Uri.parse(cursor.getString(2)));
         mPlayer.setOnCompletionListener(new OnCompletionListener() {
 
            @Override
