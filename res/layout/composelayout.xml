@@ -1,34 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:background="@drawable/backgroundnotes">
+    android:background="@drawable/backgroundnotes"
+    android:orientation="vertical" >
 
     <Button
         android:id="@+id/recButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#fcfcfc"
         android:onClick="onRecordClick"
         android:text="@string/recButtonStart" />
 
-    <TextView
-        android:id="@+id/wavInfo"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/introduceData" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#fcfcfc"
+        android:onClick="onSaveClick"
+        android:text="@string/save" />
 
     <EditText
         android:id="@+id/wavName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/saveButton"
+        android:layout_toLeftOf="@+id/saveButton"
+        android:ems="10"
+        android:textColor="#fcfcfc" >
 
-    <Button
-        android:id="@+id/saveButton"
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/wavInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onSaveClick"
-        android:text="@string/save" />
+        android:layout_above="@+id/recButton"
+        android:layout_alignParentLeft="true"
+        android:text="@string/introduceData"
+        android:textColor="#ffffffff"
+        android:textSize="8pt" />
 
-</LinearLayout>
+</RelativeLayout>
