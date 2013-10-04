@@ -17,5 +17,7 @@
     <string name="Instr">Music Shake application uses the accelerometer to produce music. You can shake your android phone or device and compose music. Keep your phone on your hand.</string>
     <string name="Instr1">Be careful not to drop it when you shake it. Shake in different directions as shown in the figure below and enjoy the sound of the guitar.</string>
     <string name="OK">OK</string>
+    <string name="summary">Click here to choose the language you want.</string>
+    <string name="titleLang">Personalize your phone!</string>
 
 </resources>

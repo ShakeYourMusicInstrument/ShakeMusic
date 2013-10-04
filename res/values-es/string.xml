@@ -17,5 +17,7 @@
     <string name="Instr">Menea el instrumento es una aplicación que te permite tocar el banjo agitando tu móvil. Agita tu cacharro y produce tu propia música. ¡Ojo! Pilla el móvil con la mano.</string>
     <string name="Instr1">Que no se te escurra mientras lo meneas. Agítalo en diferentes direcciones y disfruta escuchando tu composición para banjo.</string>
     <string name="OK">OK</string>
+    <string name="summary">Pincha aquí para elegir el lenguaje que quieras.</string>
+    <string name="titleLang">Personaliza tu móvil!</string>
 
 </resources>

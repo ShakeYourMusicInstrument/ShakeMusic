@@ -17,5 +17,8 @@
     <string name="Instr">Aplikacioni Music Shake përdor akselerometrin për të krijuar muzikë. Ju mund ta tundni pajisjen ose telefonin tuaj celular dhe të krijoni muzikë. Mbajeni telefonin me dorë.</string>
     <string name="Instr1">Kujdes mos ju bie nga dora kur e tundni. Tundeni në drejtime të ndryshme siç tregohet në figurën më poshtë dhe shijoni tingullin e kitares.</string>
     <string name="OK">OK</string>
+    <string name="summary">Klikoni këtu për të zgjedhur gjuhën.</string>
+    <string name="titleLang">Personalizoni telefonin tuaj!</string>
+    
 
 </resources>
