@@ -61,12 +61,12 @@ public class MainActivity extends Activity {
 		switch (item.getItemId()) {
 
 		case R.id.language:
-			Intent lIntent = new Intent("com.android.shakemusic.LANG");
+			Intent lIntent = new Intent("com.instrument.shakemusic.LANG");
 			startActivity(lIntent);
 			break;
 
 		case R.id.instructions:
-			Intent i = new Intent("com.android.shakemusic.INSTRUCTION");
+			Intent i = new Intent("com.instrument.shakemusic.INSTRUCTION");
 			startActivity(i);
 			break;
 
