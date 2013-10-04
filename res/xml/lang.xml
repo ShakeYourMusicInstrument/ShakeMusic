@@ -5,7 +5,7 @@
         android:entries="@array/list"
         android:entryValues="@array/lValues"
         android:key="list"
-        android:summary="Choose the language."
-        android:title="Language" />
+        android:summary="Click here to choose the language you want."
+        android:title="Personalize your phone!" />
 
 </PreferenceScreen>
