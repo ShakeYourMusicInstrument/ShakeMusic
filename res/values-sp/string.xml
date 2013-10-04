@@ -10,7 +10,7 @@
     <string name="recButtonStop">¡¡¡¡Para de grabar prehmo!!!!</string>
     <string name="introduceData">Ponle nombre a tu creación</string>
     <string name="save">Guardar</string>
-    <string name="InstructionListen">Music Shake application uses the accelerometer to produce music. You can shake your android phone or device and compose music. Keep your phone with your hand. Be careful not to drop it when you shake it. Shake in different directions as shown in the figure below and enjoy the sound of the guitar.</string>
+    <string name="InstructionListen">Menea el instrumento es una aplicación que tepermite tocar el banjo agitando tu móvil. Agita tu cacharro y produce tu propia música. ¡Ojo! Pilla el movil con la mano. Que no se te escurra mientras lo meneas. Agitalo en diferentes direcciones y disfruta escuchando tu composición para banjo.</string>
     <string name="bTextListen">Listen to Instructions</string>
     <string name="Instr">Menea el instrumento es una aplicación que tepermite tocar el banjo agitando tu móvil. Agita tu cacharro y produce tu propia música. ¡Ojo! Pilla el movil con la mano.</string>
     <string name="Instr1">Que no se te escurra mientras lo meneas. Agitalo en diferentes direcciones y disfruta escuchando tu composición para banjo.</string>
