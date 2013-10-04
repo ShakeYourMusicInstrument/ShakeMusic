@@ -57,8 +57,12 @@ public class MainActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch(item.getItemId()){
+		
 		case R.id.language:
+			Intent lIntent = new Intent("com.android.shakemusic.LANG");
+			startActivity(lIntent);
 			break;
+			
 		case R.id.instructions:
 			Intent i = new Intent("com.android.shakemusic.INSTRUCTION");
 			startActivity(i);
