@@ -1,14 +1,20 @@
 package com.android.shakemusic;
 
 import java.util.Locale;
+
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
-import android.view.MenuItem;
+import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.ListView;
 import android.widget.Toast;
 
 public class Lang extends PreferenceActivity {
 
+	 Locale myLocale;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -18,43 +24,38 @@ public class Lang extends PreferenceActivity {
 	}
 
 	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
+	protected void onListItemClick (ListView l, View v, int pos, long id) {
+		if (pos == 1) {
+			 
+            Toast.makeText(l.getContext(),
+                    "You have selected English", Toast.LENGTH_SHORT)
+                    .show();
+            setLocale("en");
+        } else if (pos == 2) {
 
-		case 1:
+            Toast.makeText(l.getContext(),
+                    "You have selected Albanian", Toast.LENGTH_SHORT)
+                    .show();
+            setLocale("al");
+        } else if (pos == 3) {
 
-			Locale locale = new Locale("us");
-			Locale.setDefault(locale);
-			Configuration config = new Configuration();
-			config.locale = locale;
-			getBaseContext().getResources().updateConfiguration(config,
-					getBaseContext().getResources().getDisplayMetrics());
-			Toast.makeText(this, "Locale in English!", Toast.LENGTH_LONG).show();
-			break;
-
-		case 2:
-
-			Locale locale2 = new Locale("al");
-			Locale.setDefault(locale2);
-			Configuration config2 = new Configuration();
-			config2.locale = locale2;
-			getBaseContext().getResources().updateConfiguration(config2,
-					getBaseContext().getResources().getDisplayMetrics());
-			Toast.makeText(this, "Lokale në Shqip!", Toast.LENGTH_LONG).show();
-			break;
-
-		case 3:
-
-			Locale locale3 = new Locale("es");
-			Locale.setDefault(locale3);
-			Configuration config3 = new Configuration();
-			config3.locale = locale3;
-			getBaseContext().getResources().updateConfiguration(config3,
-					getBaseContext().getResources().getDisplayMetrics());
-			Toast.makeText(this, "Local en Espagna!", Toast.LENGTH_LONG).show();
-			break;
-		}
-		return super.onOptionsItemSelected(item);
+            Toast.makeText(l.getContext(),
+                    "You have selected Spanish", Toast.LENGTH_SHORT)
+                    .show();
+            setLocale("es");
+        }
 	}
+	
+	 public void setLocale(String lang) {
+		 
+	        myLocale = new Locale(lang);
+	        Resources res = getResources();
+	        DisplayMetrics dm = res.getDisplayMetrics();
+	        Configuration conf = res.getConfiguration();
+	        conf.locale = myLocale;
+	        res.updateConfiguration(conf, dm);
+	        Intent refresh = new Intent(this, Lang.class);
+	        startActivity(refresh);
+	    }
 
 }
