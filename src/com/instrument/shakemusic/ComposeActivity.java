@@ -16,24 +16,57 @@ import android.widget.TextView;
 
 public class ComposeActivity extends Activity implements SensorEventListener {
 
-	private int instrument;
-	
 	private SensorManager mSensor;
 	
-	float gravity[] = new float[2];
-	int linear_acceleration[] = new int[2];
+	// Parameters to filter and eliminate gravity
+	 	
+	private float gravity[] = new float[2];
+	private int linear_acceleration[] = new int[2];
 	private final float alpha = 0.8f;
 
+	// Parameters to control accelerometer data
+	
 	private long last_update = 0;
 
 	private int prevX = 0;
 	private int prevZ = 0;
 
+	private int curX = 0;
+	private int curZ = 0;
+
+	// Music parameters
+	
+	private int instrument;
+	private Instrument []instruments = new Instrument[2];
+	
+	private AudioTrack audioTrack;
+	
+	private int countMovement = 0;
+
+	// IO parameters
+	
+	static boolean recording;
+	static IO record;
+
 	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		mSensor.unregisterListener(this);
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.composelayout);
+		
+		// Sets information about how to play
+
+		instrument = this.getIntent().getIntExtra("INSTRUMENT", -1);
+		if (instrument == Instrument.GUITAR) {
+			instruments[instrument] = new Guitar(0.26);
+		}else{
+			instruments[instrument] = new Piano(Instrument.NORM_BPM);
+		}
+		
+		mSensor = (SensorManager) getSystemService(SENSOR_SERVICE);
+		
+		recording = false;
+
+		onResume();
 	}
 
 	@Override
@@ -46,46 +79,23 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 
 	}
 
-	private int curX = 0;
-	private int curZ = 0;
-
-	static boolean recording;
-	static IO record;
-	
-	private AudioTrack audioTrack;
-	private int countMovement = 0;
-
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.composelayout);
-		findViewById(R.id.saveButton).setVisibility(View.GONE);
-		findViewById(R.id.wavInfo).setVisibility(View.GONE);
-		findViewById(R.id.wavName).setVisibility(View.GONE); 
-		instrument = this.getIntent().getIntExtra("INSTRUMENT", -1);
-		
-		mSensor = (SensorManager) getSystemService(SENSOR_SERVICE);
-		recording = false;
-		onResume();
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		mSensor.unregisterListener(this);
 	}
 
-	public void sound(int freq, int length) {
-		audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC,
-				Instrument.fs, AudioFormat.CHANNEL_IN_STEREO,
-				AudioFormat.ENCODING_PCM_16BIT, Instrument.fs * length*10 / 2,
-				AudioTrack.MODE_STATIC);
-		if (instrument == Instrument.GUITAR){
-			Guitar guitar = new Guitar(Instrument.NORM_BPM, length*10, 0.26);
-			audioTrack.write(guitar.Note(freq), 0, (Instrument.fs) * length*10 / 2);
-		}else{
-			Piano piano = new Piano(Instrument.NORM_BPM, length*10);
-			audioTrack.write(piano.Note(freq), 0, (Instrument.fs) * length*10 / 2);			
-		}
+	private void sound(int note) {
+		audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, Instrument.fs,
+				AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT,
+				(int) (Instrument.fs * Instrument.duration * 10 / 2), AudioTrack.MODE_STATIC);
+		audioTrack.write(instruments[instrument].Note(note), 0, (int) (Instrument.fs * Instrument.duration * 2));
 		audioTrack.play();
-		
+
 	}
-	
-	public void stop(){
+
+	private void stop() {
 		audioTrack.stop();
 	}
 
@@ -100,14 +110,15 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 		} else {
 			findViewById(R.id.saveButton).setVisibility(View.VISIBLE);
 			findViewById(R.id.wavInfo).setVisibility(View.VISIBLE);
-			findViewById(R.id.wavName).setVisibility(View.VISIBLE); 
+			findViewById(R.id.wavName).setVisibility(View.VISIBLE);
 			recButton.setVisibility(View.GONE);
 			mSensor.unregisterListener(this);
 		}
 	}
-	
-	public void onSaveClick(View v){
-		record.save(this,((TextView)findViewById(R.id.wavName)).getText().toString());
+
+	public void onSaveClick(View v) {
+		record.save(this, ((TextView) findViewById(R.id.wavName)).getText()
+				.toString());
 		Intent intent = new Intent(ComposeActivity.this, PlayActivity.class);
 		startActivity(intent);
 	}
@@ -120,15 +131,17 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 
 	@Override
 	public void onSensorChanged(final SensorEvent event) {
-		// alpha is calculated as t / (t + dT)
-		// with t, the low-pass filter's time-constant
-		// and dT, the event delivery rate
 		synchronized (this) {
+			
+			// Low pass filter
+			
 			gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
 			gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[2];
 
 			linear_acceleration[0] = (int) (event.values[0] - gravity[0]);
 			linear_acceleration[1] = (int) (event.values[2] - gravity[1]);
+			
+			// Start calculation
 
 			long current_time = event.timestamp;
 
@@ -156,33 +169,32 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 					last_update = current_time;
 
 					if (countMovement % 2 == 1) {
-						
-						if((curX <= 0) && (curZ > 0)){
-							if(-curX <= curZ){
-								sound(261, time_difference);
-							}else{
-								sound(293, time_difference);
+
+						if ((curX <= 0) && (curZ > 0)) {
+							if (-curX <= curZ) {
+								sound(Instrument.DO4);
+							} else {
+								sound(Instrument.RE4);
 							}
-						}else if((curX > 0) && (curZ >= 0)){
-							if(curX <= curZ ){
-								sound(329, time_difference);
-							}else{
-								sound(349, time_difference);
+						} else if ((curX > 0) && (curZ >= 0)) {
+							if (curX <= curZ) {
+								sound(Instrument.MI4);
+							} else {
+								sound(Instrument.FA4);
 							}
-						}else if((curX < 0) && (curZ <= 0)){
-							if(-curX > -curZ ){
-								sound(392, time_difference);
-							}else{
-								sound(440, time_difference);
+						} else if ((curX < 0) && (curZ <= 0)) {
+							if (-curX > -curZ) {
+								sound(Instrument.SOL4);
+							} else {
+								sound(Instrument.LA4);
 							}
-						}else if((curX >= 0) && (curZ < 0)){
-							if(curX < -curZ ){
-								sound(494, time_difference);
-							}else{
-								sound(523, time_difference);
+						} else if ((curX >= 0) && (curZ < 0)) {
+							if (curX < -curZ) {
+								sound(Instrument.SI4);
+							} else {
+								sound(Instrument.DO5);
 							}
 						}
-						
 
 					} else {
 						stop();

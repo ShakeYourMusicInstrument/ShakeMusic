@@ -5,6 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/*
+ * This class is fine
+ */
+
 public class Instructions extends Activity {
 
 	@Override
@@ -13,15 +17,15 @@ public class Instructions extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.instruction);
 	}
-	
+
 	public void Listen(View v) {
 		new Voice(this);
-    }
-	
+	}
+
 	public void ExitInstruction(View v) {
 		Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	startActivity(intent);
-    }
+		startActivity(intent);
+	}
 
 }

@@ -23,7 +23,8 @@
         android:layout_alignParentRight="true"
         android:background="#fcfcfc"
         android:onClick="onSaveClick"
-        android:text="@string/save" />
+        android:text="@string/save" 
+        android:visibility="invisible"/>
 
     <EditText
         android:id="@+id/wavName"
@@ -34,7 +35,8 @@
         android:layout_alignTop="@+id/saveButton"
         android:layout_toLeftOf="@+id/saveButton"
         android:ems="10"
-        android:textColor="#fcfcfc" >
+        android:textColor="#fcfcfc" 
+        android:visibility="invisible">
 
         <requestFocus />
     </EditText>
@@ -47,6 +49,7 @@
         android:layout_alignParentLeft="true"
         android:text="@string/introduceData"
         android:textColor="#ffffffff"
-        android:textSize="8pt" />
+        android:textSize="8pt" 
+        android:visibility="invisible"/>
 
 </RelativeLayout>

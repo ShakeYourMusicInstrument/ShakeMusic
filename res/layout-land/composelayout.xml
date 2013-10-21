@@ -18,14 +18,16 @@
         android:layout_height="53dp"
         android:text="@string/introduceData"
         android:textColor="@string/introduceData"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:visibility="invisible" />
 
     <EditText
         android:id="@+id/wavName"
         android:layout_width="match_parent"
         android:layout_height="51dp"
         android:cursorVisible="true"
-        android:ems="10" >
+        android:ems="10"
+        android:visibility="invisible" >
 
         <requestFocus />
     </EditText>
@@ -35,6 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onSaveClick"
-        android:text="@string/save" />
+        android:text="@string/save"
+        android:visibility="invisible" />
 
 </LinearLayout>

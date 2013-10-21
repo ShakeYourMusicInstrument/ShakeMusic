@@ -14,7 +14,9 @@ import android.widget.Toast;
 
 public class Lang extends PreferenceActivity {
 
-	 Locale myLocale;
+	Locale myLocale;
+
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -24,38 +26,35 @@ public class Lang extends PreferenceActivity {
 	}
 
 	@Override
-	protected void onListItemClick (ListView l, View v, int pos, long id) {
+	protected void onListItemClick(ListView l, View v, int pos, long id) {
 		if (pos == 1) {
-			 
-            Toast.makeText(l.getContext(),
-                    "You have selected English", Toast.LENGTH_SHORT)
-                    .show();
-            setLocale("en");
-        } else if (pos == 2) {
 
-            Toast.makeText(l.getContext(),
-                    "You have selected Albanian", Toast.LENGTH_SHORT)
-                    .show();
-            setLocale("al");
-        } else if (pos == 3) {
+			Toast.makeText(l.getContext(), "You have selected English",
+					Toast.LENGTH_SHORT).show();
+			setLocale("en");
+		} else if (pos == 2) {
 
-            Toast.makeText(l.getContext(),
-                    "You have selected Spanish", Toast.LENGTH_SHORT)
-                    .show();
-            setLocale("es");
-        }
+			Toast.makeText(l.getContext(), "You have selected Albanian",
+					Toast.LENGTH_SHORT).show();
+			setLocale("al");
+		} else if (pos == 3) {
+
+			Toast.makeText(l.getContext(), "You have selected Spanish",
+					Toast.LENGTH_SHORT).show();
+			setLocale("es");
+		}
 	}
-	
-	 public void setLocale(String lang) {
-		 
-	        myLocale = new Locale(lang);
-	        Resources res = getResources();
-	        DisplayMetrics dm = res.getDisplayMetrics();
-	        Configuration conf = res.getConfiguration();
-	        conf.locale = myLocale;
-	        res.updateConfiguration(conf, dm);
-	        Intent refresh = new Intent(this, Lang.class);
-	        startActivity(refresh);
-	    }
+
+	public void setLocale(String lang) {
+
+		myLocale = new Locale(lang);
+		Resources res = getResources();
+		DisplayMetrics dm = res.getDisplayMetrics();
+		Configuration conf = res.getConfiguration();
+		conf.locale = myLocale;
+		res.updateConfiguration(conf, dm);
+		Intent refresh = new Intent(this, Lang.class);
+		startActivity(refresh);
+	}
 
 }
