@@ -3,23 +3,25 @@ package com.instrument.shakemusic;
 public class Piano implements Instrument {
 
 	private int nHarm = 10;
-	private int bpm;
-	private byte generatedSnd[];
+	private byte notes[][];
 
-	Piano(int bpm) {
-		this.bpm = bpm;
+	Piano() {
 	}
 
-	public byte[] Note(int freq) {
+	public void CreateNote(int freq, int note) {
+		// Calculates the number of harmonics for that frequency
+		nHarm = (int) Math.round(fs / (freq));
 
 		int Nt, jh;
 		double An[] = new double[nHarm];
 		double dfn[] = new double[nHarm];
-		Nt = (int) (fs * duration / bpm);
+		Nt = (int) (fs * duration);
 		double sj[] = new double[Nt];
-		generatedSnd = new byte[(int) (fs * duration * 2)];
-		// Make Note
+		notes[note] = new byte[(int) (fs * duration * 2)];
 		int i, j, jsqr;
+
+		// Make note
+
 		for (i = 0; i < nHarm; i++) {
 			j = i + 1;
 			jsqr = j * j;
@@ -41,20 +43,31 @@ public class Piano implements Instrument {
 			// scale to maximum amplitude
 			final short val = (short) ((dVal * 32767));
 			// in 16 bit wav PCM, first byte is the low order byte
-			generatedSnd[i++] = (byte) (val & 0x00ff);
-			generatedSnd[i++] = (byte) ((val & 0xff00) >>> 8);
+			notes[note][i++] = (byte) (val & 0x00ff);
+			notes[note][i++] = (byte) ((val & 0xff00) >>> 8);
 
 		}
+		// if (ComposeActivity.recording) {
+		// new Thread(new Runnable() {
+		// @Override
+		// public void run() {
+		// // TODO Auto-generated method stub
+		// ComposeActivity.record.write(generatedSnd, (int) (fs * duration *
+		// 2));
+		// }
+		// });
+		// }
+	}
 
-//		if (ComposeActivity.recording) {
-//			new Thread(new Runnable() {
-//				@Override
-//				public void run() {
-//					// TODO Auto-generated method stub
-//					ComposeActivity.record.write(generatedSnd, (int) (fs * duration * 2));
-//				}
-//			});
-//		}
-		return generatedSnd;
+	public byte[] Note(int note) {
+		return notes[note];
+	}
+
+	@Override
+	public void CreateInstrument() {
+		// TODO Auto-generated method stub
+		for (int i = 0; i < 8; i++) {
+			CreateNote(pitch[i], i);
+		}
 	}
 }

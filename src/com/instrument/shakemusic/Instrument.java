@@ -9,10 +9,6 @@ public interface Instrument {
 	final double gam = 1.7;
 	final double duration = 0.125;
 
-	final int NORM_BPM = 80;
-	final int HIGH_BPM = 120;
-	final int LOW_BPM = 60;
-
 	// Instrument definition
 	
 	final String INSTRUMENT = "INSTRUMENT";

@@ -60,7 +60,7 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 		if (instrument == Instrument.GUITAR) {
 			instruments[instrument] = new Guitar(0.26);
 		}else{
-			instruments[instrument] = new Piano(Instrument.NORM_BPM);
+			instruments[instrument] = new Piano();
 		}		
 		instruments[instrument].CreateInstrument();
 		
@@ -155,32 +155,32 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	@Override
 	public void onSensorChanged(final SensorEvent event) {
 		synchronized (this) {
-			
-			// Low pass filter
-			
-			gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
-			gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[2];
 
-			linear_acceleration[0] = (int) (event.values[0] - gravity[0]);
-			linear_acceleration[1] = (int) (event.values[2] - gravity[1]);
-			
 			// Start calculation
 
 			long current_time = event.timestamp;
 
-			curX = linear_acceleration[0];
-			curZ = linear_acceleration[1];
-
-			if (prevX == 0 && prevZ == 0) {
-				last_update = current_time;
-				prevX = curX;
-				prevZ = curZ;
-			}
-
 			int time_difference = Math
 					.abs(((int) ((current_time) - last_update)) / 100000000);
 
-			if (time_difference > 0) {
+			if (time_difference > (125 * 100000000)) {
+
+				// Low pass filter
+
+				gravity[0] = alpha * gravity[0] + (1 - alpha) * event.values[0];
+				gravity[1] = alpha * gravity[1] + (1 - alpha) * event.values[2];
+
+				linear_acceleration[0] = (int) (event.values[0] - gravity[0]);
+				linear_acceleration[1] = (int) (event.values[2] - gravity[1]);
+
+				curX = linear_acceleration[0];
+				curZ = linear_acceleration[1];
+
+				if (prevX == 0 && prevZ == 0) {
+					last_update = current_time;
+					prevX = curX;
+					prevZ = curZ;
+				}
 				float movement = Math.abs((curX + curZ) - (prevX + prevZ));
 
 				float min_movement = (float) 10;
