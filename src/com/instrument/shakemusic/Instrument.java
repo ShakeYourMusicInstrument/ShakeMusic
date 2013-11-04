@@ -31,11 +31,14 @@ public interface Instrument {
 	final int SI4 = 6;
 	final int DO5 = 7;
 	
+	final int [] pitch = {262, 294, 330, 349, 392, 440, 494, 523};
+	
 	// Math helpers
 	
 	final double pi = Math.PI;
 	final double pisqr = pi * pi;
 
 	public byte[] Note(int note);
+	public void CreateInstrument();
 
 }

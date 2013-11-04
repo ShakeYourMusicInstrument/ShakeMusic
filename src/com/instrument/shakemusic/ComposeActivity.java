@@ -1,7 +1,6 @@
 package com.instrument.shakemusic;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -11,8 +10,6 @@ import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class ComposeActivity extends Activity implements SensorEventListener {
 
@@ -48,6 +45,10 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	static boolean recording;
 	static IO record;
 
+	/*
+	 * Activity related methods
+	 */
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,12 +61,19 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 			instruments[instrument] = new Guitar(0.26);
 		}else{
 			instruments[instrument] = new Piano(Instrument.NORM_BPM);
-		}
+		}		
+		instruments[instrument].CreateInstrument();
+		
+		//set Sensor
 		
 		mSensor = (SensorManager) getSystemService(SENSOR_SERVICE);
 		
+		//set recording state
+		
 		recording = false;
 
+		//start
+		
 		onResume();
 	}
 
@@ -73,6 +81,9 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
+		
+		//start listener addition 
+		
 		mSensor.registerListener(this,
 				mSensor.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_UI);
@@ -86,6 +97,10 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 		mSensor.unregisterListener(this);
 	}
 
+	/*
+	 * Sound related methods
+	 */
+	
 	private void sound(int note) {
 		audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, Instrument.fs,
 				AudioFormat.CHANNEL_IN_STEREO, AudioFormat.ENCODING_PCM_16BIT,
@@ -99,30 +114,38 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 		audioTrack.stop();
 	}
 
+	/*
+	 * onClick methods
+	 */
+	
 	public void onRecordClick(View v) {
-		Button recButton = (Button) findViewById(R.id.recButton);
-		if (!recording) {
-			// start recorder
-			recording = true;
-			record = new IO();
-			recButton.setText(R.string.recButtonStop);
-			recButton.setBackgroundColor(0xffff0000);
-		} else {
-			findViewById(R.id.saveButton).setVisibility(View.VISIBLE);
-			findViewById(R.id.wavInfo).setVisibility(View.VISIBLE);
-			findViewById(R.id.wavName).setVisibility(View.VISIBLE);
-			recButton.setVisibility(View.GONE);
-			mSensor.unregisterListener(this);
-		}
+//		Button recButton = (Button) findViewById(R.id.recButton);
+//		if (!recording) {
+//			// start recorder
+//			recording = true;
+//			record = new IO();
+//			recButton.setText(R.string.recButtonStop);
+//			recButton.setBackgroundColor(0xffff0000);
+//		} else {
+//			findViewById(R.id.saveButton).setVisibility(View.VISIBLE);
+//			findViewById(R.id.wavInfo).setVisibility(View.VISIBLE);
+//			findViewById(R.id.wavName).setVisibility(View.VISIBLE);
+//			recButton.setVisibility(View.GONE);
+//			mSensor.unregisterListener(this);
+//		}
 	}
 
 	public void onSaveClick(View v) {
-		record.save(this, ((TextView) findViewById(R.id.wavName)).getText()
-				.toString());
-		Intent intent = new Intent(ComposeActivity.this, PlayActivity.class);
-		startActivity(intent);
+//		record.save(this, ((TextView) findViewById(R.id.wavName)).getText()
+//				.toString());
+//		Intent intent = new Intent(ComposeActivity.this, PlayActivity.class);
+//		startActivity(intent);
 	}
 
+	/*
+	 * Sensor related methods
+	 */
+	
 	@Override
 	public void onAccuracyChanged(Sensor sensor, int accuracy) {
 		// TODO Auto-generated method stub

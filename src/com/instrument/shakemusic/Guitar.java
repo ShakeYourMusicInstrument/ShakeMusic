@@ -10,7 +10,7 @@ public class Guitar implements Instrument {
 		this.pluck_location = pluck_location;
 	}
 
-	public byte[] CreateNote(int freq, int note) {
+	public void CreateNote(int freq, int note) {
 
 		//Calculates the number of harmonics for that frequency
 		nHarm = (int) Math.round(fs / (freq));
@@ -62,11 +62,18 @@ public class Guitar implements Instrument {
 //				}
 //			});
 //		}
-		return null;
 	}
 	
 	public byte[] Note(int note){
 		return notes[note];
+	}
+
+	@Override
+	public void CreateInstrument() {
+		// TODO Auto-generated method stub
+		for (int i = 0;i<8;i++){
+			CreateNote(pitch[i], i);
+		}
 	}
 
 }
