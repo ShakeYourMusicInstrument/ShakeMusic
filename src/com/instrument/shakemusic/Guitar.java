@@ -53,19 +53,19 @@ public class Guitar implements Instrument {
 			notes[note][i++] = (byte) ((val & 0xff00) >>> 8);
 
 		}
-//
-//		if (ComposeActivity.recording) {
-//			new Thread(new Runnable() {
-//				@Override
-//				public void run() {
-//					// TODO Auto-generated method stub
-//					ComposeActivity.record.write(generatedSnd, duration);
-//				}
-//			});
-//		}
+
 	}
 	
-	public byte[] Note(int note){
+	public byte[] Note(final int note){		
+		if (ComposeActivity.recording) {
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					ComposeActivity.record.write(notes[note], (int) (duration*fs));
+				}
+			});
+		}
 		return notes[note];
 	}
 

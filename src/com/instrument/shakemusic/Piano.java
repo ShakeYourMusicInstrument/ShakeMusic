@@ -6,6 +6,7 @@ public class Piano implements Instrument {
 	private byte notes[][];
 
 	Piano() {
+		notes = new byte[8][];
 	}
 
 	public void CreateNote(int freq, int note) {

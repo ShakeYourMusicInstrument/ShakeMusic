@@ -18,10 +18,10 @@ public class IO {
 	private OutputStream outStream;
 	private int dataLength;
 
-	private final byte[] header = { 'R', 'I', 'F', 'F', 0, 0, 0, 0, 'W', 'A',
+	private final byte[] header = { 'R', 'I', 'F', 'X', 0, 0, 0, 0, 'W', 'A',
 			'V', 'E', 'f', 'm', 't', ' ', 16, 0, 0, 0, 1, 0, 2, 0, 40, 0x1f, 0,
 			0, 80, 0x3e, 0, 0, 4, 0,/* 35 */16, 0, 'd', 'a', 't', 'a' };
-	private final byte[] riff = { 'R', 'I', 'F', 'F' };
+	private final byte[] riff = { 'R', 'I', 'F', 'X' };
 
 	public static final String NAME = "name";
 	public static final String PATH = "path";

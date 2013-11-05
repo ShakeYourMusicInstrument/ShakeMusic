@@ -1,6 +1,7 @@
 package com.instrument.shakemusic;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -10,6 +11,8 @@ import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class ComposeActivity extends Activity implements SensorEventListener {
 
@@ -119,27 +122,27 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	 */
 	
 	public void onRecordClick(View v) {
-//		Button recButton = (Button) findViewById(R.id.recButton);
-//		if (!recording) {
-//			// start recorder
-//			recording = true;
-//			record = new IO();
-//			recButton.setText(R.string.recButtonStop);
-//			recButton.setBackgroundColor(0xffff0000);
-//		} else {
-//			findViewById(R.id.saveButton).setVisibility(View.VISIBLE);
-//			findViewById(R.id.wavInfo).setVisibility(View.VISIBLE);
-//			findViewById(R.id.wavName).setVisibility(View.VISIBLE);
-//			recButton.setVisibility(View.GONE);
-//			mSensor.unregisterListener(this);
-//		}
+		Button recButton = (Button) findViewById(R.id.recButton);
+		if (!recording) {
+			// start recorder
+			recording = true;
+			record = new IO();
+			recButton.setText(R.string.recButtonStop);
+			recButton.setBackgroundColor(0xffff0000);
+		} else {
+			findViewById(R.id.saveButton).setVisibility(View.VISIBLE);
+			findViewById(R.id.wavInfo).setVisibility(View.VISIBLE);
+			findViewById(R.id.wavName).setVisibility(View.VISIBLE);
+			recButton.setVisibility(View.GONE);
+			mSensor.unregisterListener(this);
+		}
 	}
 
 	public void onSaveClick(View v) {
-//		record.save(this, ((TextView) findViewById(R.id.wavName)).getText()
-//				.toString());
-//		Intent intent = new Intent(ComposeActivity.this, PlayActivity.class);
-//		startActivity(intent);
+		record.save(this, ((TextView) findViewById(R.id.wavName)).getText()
+				.toString());
+		Intent intent = new Intent(ComposeActivity.this, PlayActivity.class);
+		startActivity(intent);
 	}
 
 	/*
