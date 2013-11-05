@@ -8,6 +8,7 @@ public class Guitar implements Instrument {
 
 	Guitar(double pluck_location) {
 		this.pluck_location = pluck_location;
+		notes = new byte[8][];
 	}
 
 	public void CreateNote(int freq, int note) {
