@@ -28,9 +28,6 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	
 	private long last_update = 0;
 
-	private int prevX = 0;
-	private int prevZ = 0;
-
 	private int curX = 0;
 	private int curZ = 0;
 
@@ -40,8 +37,6 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	private Instrument []instruments = new Instrument[2];
 	
 	private AudioTrack audioTrack;
-	
-	private int countMovement = 0;
 
 	// IO parameters
 	
@@ -163,10 +158,9 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 
 			long current_time = event.timestamp;
 
-			int time_difference = Math
-					.abs(((int) ((current_time) - last_update)) / 100000000);
+			int time_difference = Math.abs((int) ((current_time) - last_update));
 
-			if (time_difference > (125 * 100000000)) {
+			if (time_difference > 125) {
 
 				// Low pass filter
 
@@ -178,54 +172,41 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 
 				curX = linear_acceleration[0];
 				curZ = linear_acceleration[1];
+				
+				last_update = current_time;
 
-				if (prevX == 0 && prevZ == 0) {
-					last_update = current_time;
-					prevX = curX;
-					prevZ = curZ;
-				}
-				float movement = Math.abs((curX + curZ) - (prevX + prevZ));
+				if (Math.abs(event.values[1]) < Math.abs(curX + curZ)) {
 
-				float min_movement = (float) 10;
-
-				if (movement > min_movement) {
-					countMovement++;
-					prevX = curX;
-					prevZ = curZ;
-					last_update = current_time;
-
-					if (countMovement % 2 == 1) {
-
-						if ((curX <= 0) && (curZ > 0)) {
-							if (-curX <= curZ) {
-								sound(Instrument.DO4);
-							} else {
-								sound(Instrument.RE4);
-							}
-						} else if ((curX > 0) && (curZ >= 0)) {
-							if (curX <= curZ) {
-								sound(Instrument.MI4);
-							} else {
-								sound(Instrument.FA4);
-							}
-						} else if ((curX < 0) && (curZ <= 0)) {
-							if (-curX > -curZ) {
-								sound(Instrument.SOL4);
-							} else {
-								sound(Instrument.LA4);
-							}
-						} else if ((curX >= 0) && (curZ < 0)) {
-							if (curX < -curZ) {
-								sound(Instrument.SI4);
-							} else {
-								sound(Instrument.DO5);
-							}
+					if ((curX <= 0) && (curZ > 0)) {
+						if (-curX <= curZ) {
+							sound(Instrument.DO4);
+						} else {
+							sound(Instrument.RE4);
 						}
-
-					} else {
-						stop();
+					} else if ((curX > 0) && (curZ >= 0)) {
+						if (curX <= curZ) {
+							sound(Instrument.MI4);
+						} else {
+							sound(Instrument.FA4);
+						}
+					} else if ((curX < 0) && (curZ <= 0)) {
+						if (-curX > -curZ) {
+							sound(Instrument.SOL4);
+						} else {
+							sound(Instrument.LA4);
+						}
+					} else if ((curX >= 0) && (curZ < 0)) {
+						if (curX < -curZ) {
+							sound(Instrument.SI4);
+						} else {
+							sound(Instrument.DO5);
+						}
 					}
+
+				} else {
+					stop();
 				}
+
 			}
 		}
 	}
