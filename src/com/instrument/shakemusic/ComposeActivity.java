@@ -46,32 +46,33 @@ public class ComposeActivity extends Activity implements SensorEventListener {
 	/*
 	 * Activity related methods
 	 */
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.composelayout);
-		
+
 		// Sets information about how to play
 
 		instrument = this.getIntent().getIntExtra("INSTRUMENT", -1);
+
 		if (instrument == Instrument.GUITAR) {
 			instruments[instrument] = new Guitar(0.26);
-		}else{
+		} else {
 			instruments[instrument] = new Piano();
-		}		
+		}
 		instruments[instrument].CreateInstrument();
-		
-		//set Sensor
-		
+
+		// set Sensor
+
 		mSensor = (SensorManager) getSystemService(SENSOR_SERVICE);
-		
-		//set recording state
-		
+
+		// set recording state
+
 		recording = false;
 
-		//start
-		
+		// start
+
 		onResume();
 	}
 

@@ -5,10 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-/*
- * This class is fine
- */
-
 public class Instructions extends Activity {
 
 	@Override

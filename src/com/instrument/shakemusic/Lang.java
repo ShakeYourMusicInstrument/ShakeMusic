@@ -28,17 +28,14 @@ public class Lang extends PreferenceActivity {
 	@Override
 	protected void onListItemClick(ListView l, View v, int pos, long id) {
 		if (pos == 1) {
-
 			Toast.makeText(l.getContext(), "You have selected English",
 					Toast.LENGTH_SHORT).show();
 			setLocale("en");
 		} else if (pos == 2) {
-
 			Toast.makeText(l.getContext(), "You have selected Albanian",
 					Toast.LENGTH_SHORT).show();
 			setLocale("al");
 		} else if (pos == 3) {
-
 			Toast.makeText(l.getContext(), "You have selected Spanish",
 					Toast.LENGTH_SHORT).show();
 			setLocale("es");

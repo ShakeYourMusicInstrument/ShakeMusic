@@ -60,7 +60,16 @@ public class Piano implements Instrument {
 		// }
 	}
 
-	public byte[] Note(int note) {
+	public byte[] Note(final int note){		
+		if (ComposeActivity.recording) {
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					ComposeActivity.record.write(notes[note]);
+				}
+			});
+		}
 		return notes[note];
 	}
 

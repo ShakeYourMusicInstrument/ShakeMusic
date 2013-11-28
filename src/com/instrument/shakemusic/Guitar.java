@@ -62,7 +62,7 @@ public class Guitar implements Instrument {
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					ComposeActivity.record.write(notes[note], (int) (duration*fs));
+					ComposeActivity.record.write(notes[note]);
 				}
 			});
 		}

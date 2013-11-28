@@ -3,7 +3,6 @@ package com.instrument.shakemusic;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,7 +14,7 @@ public class IO {
 	private File path;
 	private File sndFile;
 
-	private OutputStream outStream;
+	private FileOutputStream outStream;
 	private int dataLength;
 
 	private final byte[] header = { 'R', 'I', 'F', 'X', 0, 0, 0, 0, 'W', 'A',
@@ -29,7 +28,7 @@ public class IO {
 	public IO() {
 		path = Environment
 				.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC);
-		sndFile = new File(path.getAbsolutePath(), "temp");
+		sndFile = new File(path.getAbsolutePath(), "tempshake");
 		try {
 			outStream = new FileOutputStream(sndFile);
 			outStream.write(header);
@@ -39,8 +38,8 @@ public class IO {
 		}
 	}
 
-	public boolean write(byte[] data, int length) {
-		this.dataLength += length;
+	public boolean write(byte[] data) {
+		this.dataLength += Instrument.duration*Instrument.fs;
 		try {
 			outStream.write(data);
 			return true;
